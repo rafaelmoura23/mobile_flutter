@@ -29,7 +29,7 @@ class _CalculadoraState extends State<Calculadora> {
   int _cont = 0;
 
   void _calcular(String operacao) {
-    double numero1 = double.tryParse(_controllerNumero1.text) ?? 0.0;
+    int numero1 = int.tryParse(_controllerNumero1.text) as int;
     Random random = Random();
     
 
