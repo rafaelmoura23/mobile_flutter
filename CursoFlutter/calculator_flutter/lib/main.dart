@@ -45,11 +45,12 @@ class _CalculadoraState extends State<Calculadora> {
       } else if(operacao == 'Div'){
         resultado = numero1 * numero2;
       } else if(operacao == "Raiz"){
-        if(resultado!=0){
-          resultado = pow(numero1, 1/numero2) as double?;
+        if(numero1>=0 && numero2%2 != 0){
+          resultado = -pow(-numero1, 1/numero2) as double?;
         } else{
-          "Operação inválida negativo";
-        } //
+          resultado = null;
+        }
+        
       } else if(operacao == "Expo"){
         resultado = pow(numero1, numero2) as double?;
       }
@@ -107,7 +108,7 @@ class _CalculadoraState extends State<Calculadora> {
             SizedBox(height: 16.0),
             ElevatedButton(
               onPressed: () => _calcular('Raiz'),
-              child: Text('Raiz quadrada'),
+              child: Text('Raiz'),
             ),
             SizedBox(height: 16.0),
             ElevatedButton(
