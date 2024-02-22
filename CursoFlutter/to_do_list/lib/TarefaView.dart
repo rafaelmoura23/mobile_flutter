@@ -28,7 +28,8 @@ class ListaTarefasScreen extends StatelessWidget {
                 suffixIcon: IconButton(
                   onPressed: () {
                     // Chamando o método adicionarTarefa do Provider para atualizar o estado
-                    Provider.of<ListaTarefasControler>(context, listen: false).adicionarTarefa(_controller.text);
+                    Provider.of<ListaTarefasControler>(context, listen: false)
+                    .adicionarTarefa(_controller.text);
                     // Limpar o campo de texto após adicionar a tarefa
                     _controller.clear();
                   },
