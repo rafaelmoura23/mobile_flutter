@@ -81,7 +81,8 @@ class _CalculadoraState extends State<Calculadora> {
               decoration: InputDecoration(labelText: 'Número'),
             ),
             SizedBox(height: 16.0),
-            ElevatedButton(
+            if(!acertou)
+              ElevatedButton(
               onPressed: () => _calcular('advinhar'),
               child: Text('Chutar'),
             ),
@@ -96,6 +97,13 @@ class _CalculadoraState extends State<Calculadora> {
               onPressed: () => _reset('resetar'),
               child: Text('Resetar'),
             ),)
+
+            // If para verificar se acertou e aparecer o button de reiniciar
+            // if(acertou)
+            //   ElevatedButton(
+            //   onPressed: () => _reset('resetar'),
+            //   child: Text('Resetar'),
+            // ),
           ],
         ),
       ),
