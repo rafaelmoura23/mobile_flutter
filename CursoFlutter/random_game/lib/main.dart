@@ -24,29 +24,43 @@ class Calculadora extends StatefulWidget {
 
 
 class _CalculadoraState extends State<Calculadora> {
+  // Atributos iniciais da classe
   TextEditingController _controllerNumero1 = TextEditingController();
   String _resultado = '';
-  int _cont = 0;
+  int numeroSorteado = Random().nextInt(10) + 1;
+  int cont = 0;
+  bool acertou = false;
 
   void _calcular(String operacao) {
-    int numero1 = int.tryParse(_controllerNumero1.text) as int;
-    Random random = Random();
+    // Métodos
+    int numero = int.tryParse(_controllerNumero1.text) as int;
     
-
     setState(() {
-      int randomNumber = random.nextInt(10);
-      if (numero1 == randomNumber) {
-        _resultado = "Parabéns, número Correto! , Número de Tenativas: $_cont";
-        _cont = 0;
-      } else if(numero1 > randomNumber){
-        _resultado = "O número digitado é maior";
-        _cont++;
-      } else if(numero1 < randomNumber){
-         _resultado = "O número digitado é menor";
-         _cont++;
+    cont++;
+      if (numero == numeroSorteado) {
+        _resultado = "Parabéns meu caro(a), número Correto! Você acertou em $cont tentativas!";
+        print("Tentativa $cont");
+        acertou = true;
+      } else if(numero > numeroSorteado){
+        _resultado = "Tente um número menor!";
+        print("Tentativa $cont");
+      } else if(numero < numeroSorteado){
+         _resultado = "Tente um número maior!";
+         print("Tentativa $cont");
       }
     });
   }
+
+  void _reset(String operacao){
+      cont=0;
+      numeroSorteado = Random().nextInt(10) + 1;
+      _resultado = "";
+      acertou = false;
+      print(numeroSorteado);
+      setState(() {
+        _controllerNumero1.text = "";
+      });
+    }
 
 
   @override
@@ -68,12 +82,20 @@ class _CalculadoraState extends State<Calculadora> {
             ),
             SizedBox(height: 16.0),
             ElevatedButton(
-              onPressed: () => _calcular('Advinhe'),
+              onPressed: () => _calcular('advinhar'),
               child: Text('Chutar'),
             ),
             SizedBox(height: 16.0),
             Text(_resultado,
                 style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold)),
+                SizedBox(height: 16.0),
+
+                // Método para aparecer o botão resetar apenas quando acertou = true;
+                Visibility(visible: acertou,
+                  child: ElevatedButton(
+              onPressed: () => _reset('resetar'),
+              child: Text('Resetar'),
+            ),)
           ],
         ),
       ),
