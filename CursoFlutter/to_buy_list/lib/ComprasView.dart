@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:to_buy_list/TarefaController.dart';
+import 'package:to_buy_list/ComprasController.dart';
 import 'package:provider/provider.dart';
 
-class ListaTarefasScreen extends StatelessWidget {
+class ListaComprasScreen extends StatelessWidget {
   // Controlador para o campo de texto de nova tarefa
   final TextEditingController _controller = TextEditingController();
 
@@ -28,8 +28,8 @@ class ListaTarefasScreen extends StatelessWidget {
                 suffixIcon: IconButton(
                   onPressed: () {
                     // Chamando o método adicionarTarefa do Provider para atualizar o estado
-                    Provider.of<ListaTarefasControler>(context, listen: false)
-                    .adicionarTarefa(_controller.text);
+                    Provider.of<ListaComprasControler>(context, listen: false)
+                    .adicionarCompra(_controller.text);
                     // Limpar o campo de texto após adicionar a tarefa
                     _controller.clear();
                   },
@@ -40,17 +40,17 @@ class ListaTarefasScreen extends StatelessWidget {
           ),
           // Lista de tarefas usando um Consumer do Provider para atualização automática
           Expanded(
-            child: Consumer<ListaTarefasControler>(
+            child: Consumer<ListaComprasControler>(
               builder: (context, model, child) {
                 return ListView.builder(
-                  itemCount: model.tarefas.length,
+                  itemCount: model.compras.length,
                   itemBuilder: (context, index) {
                     return ListTile(
                       // Exibição do texto da tarefa
-                      title: Text(model.tarefas[index].descricao),
+                      title: Text(model.compras[index].descricao),
                       // Checkbox para marcar a tarefa como concluída
                       trailing: Checkbox(
-                        value: model.tarefas[index].concluida,
+                        value: model.compras[index].concluida,
                         onChanged: (value) {
                           // Chamando o método marcarComoConcluida do Provider para atualizar o estado
                           model.marcarComoConcluida(index);
@@ -65,18 +65,18 @@ class ListaTarefasScreen extends StatelessWidget {
                       leading: IconButton(
                         icon: Icon(Icons.edit),
                         onPressed: () {
-                          // Abre um diálogo para atualizar a tarefa
+                          // Abre um pop-up para atualizar a descrição da tarefa
                           showDialog(
                             context: context,
                             builder: (context) {
                               return AlertDialog(
-                                title: Text('Atualizar Tarefa'),
+                                title: Text('Atualizar Produto'),
                                 content: TextField(
-                                  controller: TextEditingController(
-                                      text: model.tarefas[index].descricao),
+                                controller: TextEditingController(
+                                      text: model.compras[index].descricao),
                                   onChanged: (value) {
                                     // Atualiza a descrição da tarefa conforme o usuário digita
-                                    model.tarefas[index].descricao = value;
+                                    model.compras[index].descricao = value;
                                   },
                                 ),
                                 actions: [
@@ -88,8 +88,8 @@ class ListaTarefasScreen extends StatelessWidget {
                                   ),
                                   TextButton(
                                     onPressed: () {
-                                      // Chamando o método atualizarTarefa do Provider para atualizar o estado
-                                      model.atualizarTarefa(index, model.tarefas[index].descricao);                                      
+                                      // Chamando o método atualizar tarefa
+                                      model.atualizarTarefa(index, model.compras[index].descricao);                                      
                                       Navigator.pop(context);
                                     },
                                     child: Text('Salvar'),

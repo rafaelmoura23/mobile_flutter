@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:to_buy_list/TarefaApp.dart';
+import 'package:to_buy_list/ComprasApp.dart';
 
 void main() {
-  runApp(ListaTarefasApp());
+  runApp(ListaComprasApp());
 }
