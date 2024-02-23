@@ -14,8 +14,8 @@ class ListaTarefasControler extends ChangeNotifier {
 
   // Métodos CRUD
   void adicionarTarefa(String descricao) {
-    if(descricao.isNotEmpty){
-    _tarefas.add(Tarefa(descricao, false));
+    if(descricao.trim().isNotEmpty){
+    _tarefas.add(Tarefa(descricao.trim(), false));
     // Notifica os ouvintes (widgets) sobre a mudança no estadi
     notifyListeners();
     } else{
@@ -25,7 +25,7 @@ class ListaTarefasControler extends ChangeNotifier {
 
   void marcarComoConcluida(int indice) {
     if (indice >= 0 && indice < _tarefas.length) {
-      _tarefas[indice].concluida = true;
+      _tarefas[indice].concluida = !_tarefas[indice].concluida;
       notifyListeners();
     }
   }
@@ -37,9 +37,10 @@ class ListaTarefasControler extends ChangeNotifier {
     }
   }
 
+  // método para aparecer uma mensagem na tela
   void showAlert(BuildContext context){
     QuickAlert.show(
       context: context, 
-      type: QuickAlertType.warning);
+      type: QuickAlertType.error);
   }
 }
