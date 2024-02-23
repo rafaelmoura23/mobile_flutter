@@ -12,7 +12,7 @@ class ListaTarefasScreen extends StatelessWidget {
     return Scaffold(
       // Barra superior do aplicativo
       appBar: AppBar(
-        title: Text('Lista de Tarefas'),
+        title: Text('Lista de Compras'),
       ),
       // Corpo principal do aplicativo
       body: Column(
@@ -23,7 +23,7 @@ class ListaTarefasScreen extends StatelessWidget {
             child: TextField(
               controller: _controller,
               decoration: InputDecoration(
-                labelText: 'Nova Tarefa',
+                labelText: 'Adicione um Novo Produto',
                 // Ícone para adicionar tarefa ao pressionar o botão
                 suffixIcon: IconButton(
                   onPressed: () {
@@ -61,6 +61,46 @@ class ListaTarefasScreen extends StatelessWidget {
                         // Chamando o método excluirTarefa do Provider para atualizar o estado
                         model.excluirTarefa(index);
                       },
+                     // Ícone de edição para atualizar a tarefa
+                      leading: IconButton(
+                        icon: Icon(Icons.edit),
+                        onPressed: () {
+                          // Abre um diálogo para atualizar a tarefa
+                          showDialog(
+                            context: context,
+                            builder: (context) {
+                              return AlertDialog(
+                                title: Text('Atualizar Tarefa'),
+                                content: TextField(
+                                  controller: TextEditingController(
+                                      text: model.tarefas[index].descricao),
+                                  onChanged: (value) {
+                                    // Atualiza a descrição da tarefa conforme o usuário digita
+                                    model.tarefas[index].descricao = value;
+                                  },
+                                ),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: Text('Cancelar'),
+                                  ),
+                                  TextButton(
+                                    onPressed: () {
+                                      // Chamando o método atualizarTarefa do Provider para atualizar o estado
+                                      model.atualizarTarefa(index, model.tarefas[index].descricao);                                      
+                                      Navigator.pop(context);
+                                    },
+                                    child: Text('Salvar'),
+                                    
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        },
+                      ),
                     );
                   },
                 );
@@ -72,4 +112,3 @@ class ListaTarefasScreen extends StatelessWidget {
     );
   }
 }
-
