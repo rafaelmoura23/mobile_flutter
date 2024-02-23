@@ -9,7 +9,7 @@ class ListaTarefasApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: ChangeNotifierProvider(
-      create: (context) => ListaTarefasControler(),
+      create: (context) => ListaTarefasControler(context),
       child: ListaTarefasScreen(),
     ),
     );
