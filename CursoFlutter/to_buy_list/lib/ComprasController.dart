@@ -12,17 +12,20 @@ class ListaComprasControler extends ChangeNotifier {
   ListaComprasControler(this.context);
 
   // Métodos CRUD
+  // ========================================================
   void adicionarCompra(String descricao) {
     if (descricao.trim().isNotEmpty) {
       bool taskExist = false;
       var compra;
 
+      // Verificando se já existe uma compra adicionada na lista com o mesmo nome
       for(compra in _compras) {
         if(compra.descricao.toLowerCase() == descricao.trim().toLowerCase()){
           taskExist = true;
           break;
         }
       }
+      // se a já existir um produto igual
       if(taskExist){
         showAlertExist(context);
       } else{
@@ -36,6 +39,7 @@ class ListaComprasControler extends ChangeNotifier {
     }
   }
 
+  // ========================================================
   void marcarComoConcluida(int indice) {
     if (indice >= 0 && indice < _compras.length) {
       _compras[indice].concluida = !_compras[indice].concluida;
@@ -43,6 +47,7 @@ class ListaComprasControler extends ChangeNotifier {
     }
   }
 
+  // ========================================================
   void excluirTarefa(int indice) {
     if (indice >= 0 && indice < _compras.length) {
       _compras.removeAt(indice);
@@ -50,6 +55,7 @@ class ListaComprasControler extends ChangeNotifier {
     }
   }
 
+  // ========================================================
   // Método para atualizar as compras
   void atualizarTarefa(int indice, String newDescription) {
     if (indice >= 0 && indice < _compras.length) {
@@ -59,7 +65,8 @@ class ListaComprasControler extends ChangeNotifier {
     }
   }
 
-  // método para aparecer uma mensagem na tela
+  // ==============================================
+  // métodos para aparecer uma mensagem na tela
   void showAlert(BuildContext context) {
     QuickAlert.show(
         context: context,

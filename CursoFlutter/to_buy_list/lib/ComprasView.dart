@@ -98,8 +98,8 @@ class ListaComprasScreen extends StatelessWidget {
                                 ],
                               );
                             },
-                          );
-                        },
+                          ); // Final do Dialog
+                        }, // Final do OnPressed
                       ),
                     );
                   },
