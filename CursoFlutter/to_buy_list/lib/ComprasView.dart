@@ -51,7 +51,7 @@ class ListaComprasScreen extends StatelessWidget {
                     return ListTile(
                       // Exibição do texto da tarefa
                       title: Text(model.compras[index].descricao),
-                      subtitle: Text("${model.compras[index].data.day}/${model.compras[index].data.month}/${model.compras[index].data.year}"), // Formatação da data como subtitulo
+                      subtitle: Text("${model.compras[index].data.day}/${model.compras[index].data.month}/${model.compras[index].data.year} - ${model.compras[index].data.hour}: ${model.compras[index].data.minute}: ${model.compras[index].data.second}:"), // Formatação da data como subtitulo
                       // Checkbox para marcar a tarefa como concluída
                       trailing: Checkbox(
                         value: model.compras[index].concluida,
