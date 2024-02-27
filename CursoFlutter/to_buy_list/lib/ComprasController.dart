@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:to_buy_list/ComprasModel.dart';
-
-import 'package:quickalert/quickalert.dart';
+import 'package:quickalert/quickalert.dart'; // import alerts
 
 class ListaComprasControler extends ChangeNotifier {
   BuildContext context;
@@ -25,14 +24,16 @@ class ListaComprasControler extends ChangeNotifier {
           break;
         }
       }
-      // se a já existir um produto igual
+      // Se já existir um produto igual
       if(taskExist){
         showAlertExist(context);
       } else{
-        _compras.add(Compra(descricao.trim(), false));
-      // Notifica os ouvintes (widgets) sobre a mudança no estado
-      notifyListeners();
-      showAlertSucess(context);
+        // Obter a data atual
+        DateTime dataAtual = DateTime.now();
+        _compras.add(Compra(descricao.trim(), false, dataAtual));
+        // Notifica os ouvintes (widgets) sobre a mudança no estado
+        notifyListeners();
+        showAlertSucess(context);
         }
       } else {
       showAlert(context);
@@ -44,6 +45,7 @@ class ListaComprasControler extends ChangeNotifier {
     if (indice >= 0 && indice < _compras.length) {
       _compras[indice].concluida = !_compras[indice].concluida;
       notifyListeners();
+      showAlertRemove(context);
     }
   }
 
@@ -52,6 +54,7 @@ class ListaComprasControler extends ChangeNotifier {
     if (indice >= 0 && indice < _compras.length) {
       _compras.removeAt(indice);
       notifyListeners();
+      // showAlertRemove(context);
     }
   }
 
@@ -70,16 +73,16 @@ class ListaComprasControler extends ChangeNotifier {
   void showAlert(BuildContext context) {
     QuickAlert.show(
         context: context,
-        title: "TASK IS BLANK!",
+        title: "CAMPO EM BRANCO!",
         text:
-            "Escreva algo na tarefa, não é permitido adicionar compras em branco!",
+            "Escreva algo, não é permitido adicionar produtos em branco!",
         type: QuickAlertType.error);
   }
 
   void showAlertSucess(BuildContext context) {
     QuickAlert.show(
         context: context,
-        title: "TASK ADDED!",
+        title: "PRODUTO ADICIONADO À LISTA!",
         text: "Tarefa adicionada com Sucesso!",
         type: QuickAlertType.success);
   }
@@ -87,15 +90,23 @@ class ListaComprasControler extends ChangeNotifier {
   void showAlertUpdate(BuildContext context) {
     QuickAlert.show(
         context: context,
-        text: "Tarefa atualizada com sucesso!",
+        text: "Produto atualizada com sucesso!",
         type: QuickAlertType.info);
   }
 
   void showAlertExist(BuildContext context) {
     QuickAlert.show(
         context: context,
-        title: "TAREFA EXISTENTE!",
-        text: "Já existe uma tarefa com esse nome",
+        title: "PRODUTO EXISTENTE!",
+        text: "Já existe uma item com esse nome",
         type: QuickAlertType.warning);
+  }
+
+  void showAlertRemove(BuildContext context) {
+    QuickAlert.show(
+        context: context,
+        title: "ITEM MARCADO COMO CONCLUÍDO!",
+        text: "Item comprado!",
+        type: QuickAlertType.confirm);
   }
 }

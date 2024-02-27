@@ -7,6 +7,7 @@ class ListaComprasScreen extends StatelessWidget {
   final TextEditingController _controller = TextEditingController();
 
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,6 +39,8 @@ class ListaComprasScreen extends StatelessWidget {
               ),
             ),
           ),
+          
+          
           // Lista de tarefas usando um Consumer do Provider para atualização automática
           Expanded(
             child: Consumer<ListaComprasControler>(
@@ -48,6 +51,7 @@ class ListaComprasScreen extends StatelessWidget {
                     return ListTile(
                       // Exibição do texto da tarefa
                       title: Text(model.compras[index].descricao),
+                      subtitle: Text("${model.compras[index].data.day}/${model.compras[index].data.month}/${model.compras[index].data.year}"), // Formatação da data como subtitulo
                       // Checkbox para marcar a tarefa como concluída
                       trailing: Checkbox(
                         value: model.compras[index].concluida,
