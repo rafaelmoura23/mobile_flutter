@@ -1,5 +1,3 @@
-import 'dart:html';
-
 class Animal {
   // atributos
   String _especie; // atributo privado
@@ -7,13 +5,12 @@ class Animal {
   String _urlAudio;
 
   // construtor
-  Animal(String this._especie, String this._urlFoto, String this._urlAudio);
+  Animal(this._especie, this._urlFoto, this._urlAudio);
 
   // Getter
   String get especie => _especie;
   String get urlFoto => _urlFoto;
   String get urlAudio => _urlAudio;
-
 
   // Setter
   set especie(String especie){
@@ -27,5 +24,4 @@ class Animal {
   set urlAudio(String urlAudio){
     this._urlAudio = urlAudio;
   }
-
 }

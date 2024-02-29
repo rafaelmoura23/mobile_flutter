@@ -1,9 +1,7 @@
+import 'package:app_animais/AnimaisApp.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(ListaAnimaisApp());
 }
 
-class MyApp extends StatelessWidget {
-  
-}
