@@ -24,6 +24,7 @@ class MyApp extends StatelessWidget {
 // Corpo da tela, composto por um Column (coluna vertical) de widgets
         body: Column(
           children: [
+            
 // Texto simples como primeiro filho da coluna
              Container(
               child: Row(
