@@ -19,26 +19,53 @@ class MyApp extends StatelessWidget {
 // Barra superior da tela (AppBar)
         appBar: AppBar(
 // Título da barra superior
-          title: Text('Exemplo de Árvore de Widgets'),
+          title: Text('Exercicíos Flutter 🌏'),
         ),
 // Corpo da tela, composto por um Column (coluna vertical) de widgets
         body: Column(
           children: [
 // Texto simples como primeiro filho da coluna
-            Text('Primeiro Filho'),
-// Container contendo um Row (linha horizontal) de dois Text widgets
-
-            Container(
+             Container(
               child: Row(
                 children: [
-                  Text('Filho Aninhado 1'),
-                  Text('Filho Aninhado 2'),
+                  Text('Rafael de Sousa Moura'),
+                  Icon(Icons.people)
                 ],
               ),
             ),
-
-// Texto simples como segundo filho da coluna
-            Text('Segundo Filho'),
+            Container(
+              child: Row(
+                children: [
+                  Text('20 anos'),
+                  Icon(Icons.numbers)
+                ],
+              ),
+            ),
+            Container(
+              child: Row(
+                children: [
+                  Text('Rua dos Sábias, 321'),
+                  Icon(Icons.home)
+                ],
+              ),
+            ),
+            Container(
+              child: Row(
+                children: [
+                  Text('(19)1234-5678'),
+                  Icon(Icons.phone)
+                ],
+              ),
+            ),
+            Container(
+              child: Row(
+                children: [
+                  Text('rafael@email.com'),
+                  Icon(Icons.email)
+                ],
+              ),
+            ),
+            
           ],
         ),
       ),
