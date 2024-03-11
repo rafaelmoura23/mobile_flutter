@@ -12,23 +12,28 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
     home: DefaultTabController(
-      length: 3,
+      // numero de abas
+      length: 4,
       child: Scaffold(
         appBar: AppBar(
           bottom: TabBar(
+            // abas
             tabs: [
               Tab(icon: Icon(Icons.flight)),
               Tab(icon: Icon(Icons.directions_transit)),
               Tab(icon: Icon(Icons.directions_car)),
+              Tab(icon: Icon(Icons.electric_bike))
             ],
           ),
-          title: Text('Tabs Demo'),
+          title: Text('EXERCÍCIO BARRA DE NAVEGAÇÃO'),
         ),
         body: TabBarView(
           children: [
-            Icon(Icons.flight, size: 350),
-            Icon(Icons.directions_transit, size: 350),
-            Icon(Icons.directions_car, size: 350),
+            // conteúdo das abas
+            Text("Primeira Aba"),
+            Text("Segunda Aba"),
+            Text("Terceira Aba"),
+            Text("Quarta Aba")
           ],
         ),
       ),
