@@ -16,46 +16,47 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: Text('Exercicío 2'),
         ),
-        body: Column(
-          children: [
-            Text('Filho 1'),
-            Container(
-              child: Row(
+        body: Container(
+          child: Row(
+            children: [
+              Column(
                 children: [
-                  Text('Linha 1 | Coluna 1'),
-                  Icon(Icons.people),
-                  Text('Linha 1 | Coluna 2'),
-                  Icon(Icons.accessible_forward_sharp)
-                ],
-              ),
-            ),
-            Container(
-              child: Row(
-                children: [
-                  Text('Linha 2 | Coluna 1'),
+                  Text("Coluna 1"),
                   Icon(Icons.abc),
-                ],
-              ), 
-            ),
-            Container(
-              child: Row(
-                children: [
-                  Text('Linha 3 | Coluna 1'),
-                  Text('   Coluna 2')
+                  Icon(Icons.people),
+                  Icon(Icons.catching_pokemon)
                 ],
               ),
-            ),
-            Container(
-              child: Row(
+              SizedBox(width: 16.0),
+              Column(
                 children: [
-                  Image.asset('..//lib/assets/flutter.png'),
+                  Text("Coluna 2"),
+                  Text("Nome"),
+                  Text("Rafael"),
+                  Container(
+                    width: 100.0, // Define a largura desejada da imagem
+                    height: 100.0, // Define a altura desejada da imagem
+                    child: Image.asset('..//lib/assets/flutter.png'),
+                  )
                 ],
               ),
-            ),
-            Image.network('https://imgs.search.brave.com/v5SISfnf2pD8H0-1PueumhYLHIox0uppHmzcTo29ddY/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9jYW1v/LmdpdGh1YnVzZXJj/b250ZW50LmNvbS8y/ODkyNGE4Y2YzOTlj/NDg5YTVkZWJmZGQ5/ZTFmNTBmZDRmOTM2/ZmFmN2RlZmQ0MDFh/NGRjZjhjM2Y1ZjE5/MDA4LzY4NzQ3NDcw/NzMzYTJmMmY3Mzc0/NmY3MjYxNjc2NTJl/Njc2ZjZmNjc2YzY1/NjE3MDY5NzMyZTYz/NmY2ZDJmNjM2ZDcz/MmQ3Mzc0NmY3MjYx/Njc2NTJkNjI3NTYz/NmI2NTc0MmY2MzM4/MzIzMzY1MzUzMzYy/MzM2MTMxNjEzNzYy/MzA2NDMzMzY2MTM5/MmU3MDZlNjc')
-          ],
+              SizedBox(width: 16.0),
+              Column(
+                children: [
+                  Text("Coluna 3"),
+                  Text("Idade"), 
+                  Text("20 anos"),
+                  Container(
+                    width: 100.0, // Define a largura desejada da imagem
+                    height: 100.0, // Define a altura desejada da imagem
+                    child: Image.network('https://imgs.search.brave.com/v5SISfnf2pD8H0-1PueumhYLHIox0uppHmzcTo29ddY/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9jYW1v/LmdpdGh1YnVzZXJj/b250ZW50LmNvbS8y/ODkyNGE4Y2YzOTlj/NDg5YTVkZWJmZGQ5/ZTFmNTBmZDRmOTM2/ZmFmN2RlZmQ0MDFh/NGRjZjhjM2Y1ZjE5/MDA4LzY4NzQ3NDcw/NzMzYTJmMmY3Mzc0/NmY3MjYxNjc2NTJl/Njc2ZjZmNjc2YzY1/NjE3MDY5NzMyZTYz/NmY2ZDJmNjM2ZDcz/MmQ3Mzc0NmY3MjYx/Njc2NTJkNjI3NTYz/NmI2NTc0MmY2MzM4/MzIzMzY1MzUzMzYy/MzM2MTMxNjEzNzYy/MzA2NDMzMzY2MTM5/MmU3MDZlNjc')
+                  )
+                  ],
+                  
+              )
+            ],
+          ),
         ),
-        
       ),
     );
   }

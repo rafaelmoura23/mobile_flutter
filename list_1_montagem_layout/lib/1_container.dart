@@ -16,70 +16,36 @@ class Exercise1 extends StatelessWidget {
         appBar: AppBar(
           title: Text('Exercicío 1'),
         ),
-        body: Center(
-          child: Container(
-              width: 200,
-              height:300,
-              color: const Color.fromARGB(255, 163, 210, 248),
-              child: Column(
-                    children: [
-                Text(
-                  'Pai',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
+        body: Container(
+          child: Row(
+            children: [
+              Column(
+                children: [
+                  Container(
+                    color: Colors.red,
+                    width: 100,
+                    height: 100,
+                    child: Text("Container 1")
                   ),
-                ),
-                SizedBox(height: 20),
-                Container(
-                  width: 150,
-                  height: 50,
-                  color: Colors.green,
-                  child: Center(
-                    child: Text(
-                      'Filho 1',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                      ),
-                    ),
+                  Container(
+                    color: Colors.blue,
+                    width: 200,
+                    height: 200,
+                    child: Text("Container 2")
                   ),
-                ),
-                SizedBox(height: 20),
-                Container(
-                  width: 100,
-                  height: 100,
-                  color: Colors.red,
-                  child: Center(
-                    child: Text(
-                      'Filho 2',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                      ),
-                    ),
+                  Container(
+                    color: Colors.purple,
+                    width: 300,
+                    height: 150,
+                    child: Text("Container 3")
                   ),
-                ),
-                SizedBox(height: 20),
-                Container(
-                  width: 80,
-                  height: 40,
-                  color: const Color.fromARGB(255, 127, 54, 244),
-                  child: Center(
-                    child: Text(
-                      'Filho 3',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                      ),
-                    ),
-                  ),
-                ),
+                ],
+              )
+             
               ],
             ),
             ),
         ),
-      ),
     );
   }
 }

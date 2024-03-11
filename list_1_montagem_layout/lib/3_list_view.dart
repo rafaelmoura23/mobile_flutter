@@ -16,10 +16,10 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: Text('List View | Classificação ⚽'),
         ),
-        body: ListView.builder(
-          // número de cards
-          itemCount: 10, 
-          itemBuilder: (context, index) {
+        body: ListView.builder (
+          // quantidade de cards
+          itemCount: 10,
+          itemBuilder: (context,index) {
             return Card(
               child: ListTile(
                 // itens de dentro de cada card
@@ -29,9 +29,9 @@ class MyApp extends StatelessWidget {
               ),
             );
           },
+          ),
         ),
-      ),
-    );
+      );
   }
 }
 
