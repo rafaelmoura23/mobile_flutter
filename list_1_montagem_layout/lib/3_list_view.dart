@@ -10,20 +10,22 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    // int numeroSorteado = Random().nextInt(10) + 1;
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('List View'),
+          title: Text('List View | Classificação ⚽'),
         ),
         body: ListView.builder(
-          itemCount: 10,
+          // número de cards
+          itemCount: 10, 
           itemBuilder: (context, index) {
             return Card(
               child: ListTile(
-                leading: Icon(Icons.person),
-                title: Text('Pessoa $index'),
-                subtitle: Text('Cargo $index'),
-                trailing: Icon(Icons.arrow_forward),
+                // itens de dentro de cada card
+                leading: Icon(Icons.sports_soccer),
+                title: Text('Time $index'),
+                subtitle: Text('Gols: $index')
               ),
             );
           },
