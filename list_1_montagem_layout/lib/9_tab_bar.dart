@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       length: 4,
       child: Scaffold(
         appBar: AppBar(
-          title: Text('EXERCÍCIO BARRA DE NAVEGAÇÃO'),
+          title: Text('Exercício barra de navegação'),
           bottom: TabBar(
             // abas
             tabs: [
@@ -29,15 +29,6 @@ class MyApp extends StatelessWidget {
               Tab(icon: Icon(Icons.electric_bike))
             ],
           ),
-        ),
-        body: TabBarView(
-          children: [
-            // conteúdo das abas
-            Text("Primeira Aba"),
-            Text("Segunda Aba"),
-            Text("Terceira Aba"),
-            Text("Quarta Aba")
-          ],
         ),
       ),
       ),
