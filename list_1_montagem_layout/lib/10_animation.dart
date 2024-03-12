@@ -54,7 +54,7 @@ class _MyAppState extends State<MyApp> {
             IconButton(
               onPressed: () => _changeColor(Colors.red),
               icon: Icon(Icons.palette),
-            ),
+            ),  
           ],
         ),
       ),
