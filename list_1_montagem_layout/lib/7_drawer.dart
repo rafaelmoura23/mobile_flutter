@@ -13,12 +13,11 @@ class MyApp extends StatelessWidget {
           title: Text('Exercício 7 - Menu Lateral(Drawer)'),
         ),
         drawer: Drawer(
-          child: Container(
             child: ListView(
               children: [
                 DrawerHeader(
                   decoration: BoxDecoration(
-                    color: const Color.fromARGB(255, 78, 107, 130),
+                    color: Color.fromARGB(255, 78, 107, 130),
                   ),
                   child: Text(
                     'Drawer',
@@ -48,7 +47,6 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
-      ),
     );
   }
 }

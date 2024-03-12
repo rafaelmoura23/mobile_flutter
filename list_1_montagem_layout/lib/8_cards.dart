@@ -19,31 +19,74 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: Text('Exercicío 8 - Widget Card'),
+          backgroundColor: Colors.blueAccent,
         ),
         body: Center(
+          // card
           child: Card(
+            shadowColor: Colors.black,
+            child: Container(
+              width: 300,
+              height: 200,
+              child: Padding(
+                padding: EdgeInsets.all(16.0),
                 child: Column(
-                  mainAxisSize: MainAxisSize.min,
                   children: [
-                    ListTile(
-                      leading: Icon(Icons.album),
-                      title: Text('Card 1'),
-                    ),
-                    Image.network(
-                      'https://imgs.search.brave.com/so6bclYur-RRzVYgStSjJBcVNLCiQuEIYPHG94zpieQ/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9wb3J0/YWxkb2NvbG9yYWRv/LmNvbS5ici93cC1j/b250ZW50L3VwbG9h/ZHMvMjAyMi8wNi9l/c3BvcnRlLWNvcGEt/dGFjYS0yMDE4MDYx/NC0wMDEtMS02ODB4/NDMwLmpwZw',
-                    fit:BoxFit.cover,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(16.0),
-                      child: Text(
-                        'Descrição',
-                        style: TextStyle(fontSize: 16.0),
+                    CircleAvatar(
+                      child: CircleAvatar(
+                        backgroundColor: const Color.fromARGB(255, 189, 189, 189),
+                        backgroundImage: NetworkImage(
+                            "https://imgs.search.brave.com/RE-TzKbU0pUHqVXC1pCZKQt7S6YIUZb__M0iP09JVP4/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9jZG4u/aWNvbi1pY29ucy5j/b20vaWNvbnMyLzI2/NDUvUE5HLzUxMi9w/ZXJzb25faWNvbl8x/NTk5MjEucG5n"),
                       ),
-                      )
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      "People 1",
+                      style: TextStyle(
+                        fontSize: 30,
+                        color: Colors.blue,
+                        fontWeight: FontWeight.w400,
+                        fontFamily: AutofillHints.birthdayMonth,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      "Rafael de Sousa Moura - Data Science",
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.blue,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    SizedBox(
+                      width: 150,
+                      child: ElevatedButton(
+                      onPressed: () {}, 
+                      style: ButtonStyle(
+                        foregroundColor: 
+                        MaterialStatePropertyAll(Colors.white),
+                          backgroundColor:
+                              MaterialStatePropertyAll(Colors.blue)
+                              ),
+                              child: Row(
+                                children: [
+                                  Icon(Icons.touch_app),
+                                  Text('Contratar')
+                                ],
+                              ),
+                      ),
+                    ),
                   ],
                 ),
               ),
-              
+            ),
+          ),
         ),
       ),
     );
