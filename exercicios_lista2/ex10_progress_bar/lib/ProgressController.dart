@@ -1,5 +1,6 @@
-import 'package:ex10_progress_bar/ProgressModel.dart';
 import 'package:flutter/material.dart';
+import 'package:ex10_progress_bar/ProgressModel.dart';
+
 
 class ProgressController {
   ProgressModel model;
