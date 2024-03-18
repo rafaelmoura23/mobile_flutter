@@ -29,7 +29,8 @@ class Exercise5 extends StatelessWidget {
                 ),
                 boxShadow: [
                   BoxShadow(
-                    color: const Color.fromARGB(255, 206, 206, 206).withOpacity(0.5),
+                    color: const Color.fromARGB(255, 206, 206, 206)
+                        .withOpacity(0.5),
                     spreadRadius: 5,
                     blurRadius: 7,
                     offset: Offset(0, 3),
