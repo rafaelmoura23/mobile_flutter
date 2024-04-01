@@ -3,25 +3,23 @@ class ContactModel {
   String name;
   String email;
   String phone;
-  String addressline1;
+  String addressLine1;
 
   ContactModel({
     required this.id,
     required this.name,
     required this.email,
     required this.phone,
-    required this.addressline1,
+    required this.addressLine1,
   });
-
-  // Método para converter um contato para um map (chav-valor) (para salvar no banco de dados)
+  // Método para converter um contato para um mapa (para salvar no banco de dados)
   Map<String, dynamic> toMap() {
     return {
-      // colunas : atributo
       'id': id,
       'name': name,
       'email': email,
       'phone': phone,
-      'addressline1': addressline1,
+      'addressLine1': addressLine1,
     };
   }
 
@@ -32,7 +30,7 @@ class ContactModel {
       name: map['name'],
       email: map['email'],
       phone: map['phone'],
-      addressline1: map['addressline1'],
+      addressLine1: map['addressLine1'],
     );
   }
 }

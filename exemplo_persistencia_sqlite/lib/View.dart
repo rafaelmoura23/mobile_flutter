@@ -1,5 +1,6 @@
 // Classe responsável por exibir a página inicial do aplicativo
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'DataBaseController.dart';
 import 'Model.dart';
@@ -10,7 +11,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final dbHelper = DataBaseHelper();
+  final dbHelper = DatabaseHelper();
   final _formKey = GlobalKey<FormState>();
 
   // Controllers para os campos de texto
@@ -76,9 +77,17 @@ class _HomePageState extends State<HomePage> {
                 TextFormField(
                   controller: _idController,
                   decoration: InputDecoration(labelText: 'ID'),
+                  keyboardType: TextInputType
+                      .number, // Define o tipo de teclado para numérico
+                  inputFormatters: <TextInputFormatter>[
+                    FilteringTextInputFormatter
+                        .digitsOnly // Permite apenas a entrada de dígitos
+                  ],
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return 'Please enter a id';
+                      return 'Please enter an ID';
+                    } else if (!RegExp(r'^[0-9]+$').hasMatch(value)) {
+                      return 'Please enter a valid ID (only digits allowed)';
                     }
                     return null;
                   },
@@ -137,7 +146,7 @@ class _HomePageState extends State<HomePage> {
       name: _nameController.text,
       email: _emailController.text,
       phone: _phoneController.text,
-      addressline1: _address1Controller.text, 
+      addressLine1: _address1Controller.text,
     );
 
     dbHelper.create(newContact);
