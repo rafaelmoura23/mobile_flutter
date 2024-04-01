@@ -5,9 +5,7 @@ import 'package:sqflite/sqflite.dart';
 class DatabaseHelper {
   static const String DATABASE_NAME = 'users.db'; // Nome do banco de dados
   static const String TABLE_NAME = 'users'; // Nome da tabela
-  static const String
-      CREATE_CONTACTS_TABLE_SCRIPT = // Script SQL para criar a tabela
-      "CREATE TABLE contacts(id INTEGER PRIMARY KEY, name TEXT, password TEXT)";
+  static const String CREATE_CONTACTS_TABLE_SCRIPT = "CREATE TABLE users(id INTEGER PRIMARY KEY, name TEXT, password TEXT)";
 
   Future<Database> _getDatabase() async {
     return openDatabase(
