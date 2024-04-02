@@ -33,7 +33,7 @@ void _showAddContactDialog(BuildContext context) {
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text('Cadastro Usuário'),
-        )
+        );
         }
     );
 }
