@@ -1,28 +1,27 @@
-class UserModel {
-  int id;
+class ContactModel {
   String name;
-  String password;
+  String email;
+  String senha;
 
-  UserModel({
-    required this.id,
+  ContactModel({
     required this.name,
-    required this.password,
+    required this.email,
+    required this.senha,
   });
-
+  
   Map<String, dynamic> toMap() {
-    return{
-      'id': id,
-      'name' : name,
-      'password' : password,
+    return {
+      'name': name,
+      'email': email,
+      'senha': senha,
     };
   }
 
-  factory UserModel.fromMap(Map<String, dynamic> map) {
-    return UserModel(
-      id: map['id'], 
-      name: map['name'], 
-      password: map['password']
-      );
+  factory ContactModel.fromMap(Map<String, dynamic> map) {
+    return ContactModel(
+      name: map['name'],
+      email: map['email'],
+      senha: map['senha'],
+    );
   }
-
 }

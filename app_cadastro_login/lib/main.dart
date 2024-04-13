@@ -1,4 +1,4 @@
-import 'package:app_cadastro_login/View.dart';
+import 'View.dart';
 import 'package:flutter/material.dart';
 
 void main(){
@@ -12,11 +12,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "Projeto SQLite - Cadastro e Login",
+      debugShowCheckedModeBanner: false,
+      title: "Project SQLITE and SharedPreferences",
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        brightness: Brightness.light, // Define o tema claro como padrão
       ),
-      home: CadastroPage(),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark, // Define o tema escuro
+      ),
+      home: HomePage(),
     );
   }
 }
