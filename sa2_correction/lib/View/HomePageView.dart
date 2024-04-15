@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class PaginaHome extends StatefulWidget {
-  PaginaHome({super.key, required this.email});
   String email;
+  PaginaHome({required this.email});
 
   @override
   State<PaginaHome> createState() => _PaginaHomeState();
