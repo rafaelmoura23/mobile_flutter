@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sa2_correction/View/LoginPageView.dart';
+
+import 'View/LoginPageView.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "SA2 - Correction",
+      title: "SA2",
       debugShowCheckedModeBanner: false,
       home: PaginaLogin(),
     );

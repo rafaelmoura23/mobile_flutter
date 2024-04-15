@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:sa2_correction/Model/Usuario.dart';
 
 import '../Controller/BancoDados.dart';
-import '../Model/Usuario.dart';
 
 class PaginaCadastro extends StatefulWidget {
   @override

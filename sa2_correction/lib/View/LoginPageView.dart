@@ -109,7 +109,7 @@ class _PaginaLoginState extends State<PaginaLogin> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => PaginaHome(email: usuario.email),
+              builder: (context) => PaginaHome(email:usuario.email),
             ),
           );
         } else {
