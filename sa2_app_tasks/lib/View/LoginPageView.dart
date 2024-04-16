@@ -107,7 +107,7 @@ class _LoginPageState extends State<LoginPage> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => PaginaTasks(email: usuario.email),
+              builder: (context) => PaginaTasks(email: usuario.email, nome: usuario.nome),
             ),
           );
         } else {
