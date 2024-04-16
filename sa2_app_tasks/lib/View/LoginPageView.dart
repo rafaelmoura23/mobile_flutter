@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:quickalert/quickalert.dart';
 import 'package:sa2_app_tasks/Controller/BancoDeDados.dart';
 import 'package:sa2_app_tasks/Model/Usuario.dart';
 import 'package:sa2_app_tasks/View/CadastroPageView.dart';

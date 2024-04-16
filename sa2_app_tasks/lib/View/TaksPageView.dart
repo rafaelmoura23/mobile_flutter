@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sa2_app_tasks/Controller/Notifications.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+// ignore: must_be_immutable
 class PaginaTasks extends StatefulWidget {
   String email;
   String nome;
