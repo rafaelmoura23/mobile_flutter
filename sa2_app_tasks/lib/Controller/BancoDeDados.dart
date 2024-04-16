@@ -34,7 +34,7 @@ class BancoDadosCrud {
     }
   }
 
-  // Método para obter o dado do usuario
+  // Método para obter os dados do usuario
   Future<Usuario?> getUsuario(String email, String senha) async {
     try {
       final Database db = await _getDatabase();
