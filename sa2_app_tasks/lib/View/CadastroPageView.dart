@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sa2_app_tasks/Controller/BancoDeDados.dart';
+import 'package:sa2_app_tasks/Controller/Notifications.dart';
 import 'package:sa2_app_tasks/Model/Usuario.dart';
 
 class PaginaCadastro extends StatefulWidget {

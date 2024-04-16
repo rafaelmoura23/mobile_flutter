@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sa2_app_tasks/Controller/Notifications.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class PaginaTasks extends StatefulWidget {
@@ -13,6 +14,8 @@ class PaginaTasks extends StatefulWidget {
 
 class _PaginaTasksState extends State<PaginaTasks> {
   List<String> tasks = []; // Lista de tarefas
+  List<bool> taskStatus = []; // tarefas concluídas
+
   final TextEditingController _controller = TextEditingController();
   late SharedPreferences _prefs;
   String email;
@@ -49,7 +52,7 @@ class _PaginaTasksState extends State<PaginaTasks> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Bem vindo(a), ${nome}'),
+        title: Text('Bem vindo(a), ${nome}! 📃'),
       ),
       body: ListView.builder(
         itemCount: tasks.length,
@@ -65,6 +68,7 @@ class _PaginaTasksState extends State<PaginaTasks> {
                       setState(() {
                         tasks.removeAt(index);
                         saveTasks();
+                        showAlertRemove(context);
                       });
                     },
                   ),
@@ -84,10 +88,15 @@ class _PaginaTasksState extends State<PaginaTasks> {
                             actions: <Widget>[
                               TextButton(
                                   onPressed: () {
-                                    updateTasks(index, _updateController.text);
-                                    Navigator.of(context).pop();
+                                    if (_updateController.text.isNotEmpty) {
+                                      updateTasks(
+                                          index, _updateController.text);
+                                      Navigator.of(context).pop();
+                                    } else {
+                                      showAlert(context);
+                                    }
                                   },
-                                  child: Icon(Icons.save)),
+                                  child: Text('Atualizar!')),
                             ],
                           );
                         },
@@ -112,12 +121,16 @@ class _PaginaTasksState extends State<PaginaTasks> {
                 actions: <Widget>[
                   TextButton(
                     onPressed: () {
-                      setState(() {
-                        tasks.add(_controller.text);
-                        saveTasks();
-                        _controller.clear();
-                        Navigator.of(context).pop();
-                      });
+                      if (_controller.text.isNotEmpty) {
+                        setState(() {
+                          tasks.add(_controller.text);
+                          saveTasks();
+                          _controller.clear();
+                          Navigator.of(context).pop();
+                        });
+                      } else {
+                        showAlert(context);
+                      }
                     },
                     child: Text('Adicionar'),
                   ),

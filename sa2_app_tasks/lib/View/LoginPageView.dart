@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:quickalert/quickalert.dart';
 import 'package:sa2_app_tasks/Controller/BancoDeDados.dart';
 import 'package:sa2_app_tasks/Model/Usuario.dart';
 import 'package:sa2_app_tasks/View/CadastroPageView.dart';
@@ -81,7 +82,7 @@ class _LoginPageState extends State<LoginPage> {
                       MaterialPageRoute(builder: (context) => PaginaCadastro()),
                     );
                   },
-                  child: Text('Não tem uma conta? Cadastre-se'),
+                  child: Text('Cadastre-se'),
                 ),
               ],
             ),
@@ -131,4 +132,5 @@ class _LoginPageState extends State<LoginPage> {
   bool isValidEmail(String email) {
     return RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(email);
   }
+  
 }
