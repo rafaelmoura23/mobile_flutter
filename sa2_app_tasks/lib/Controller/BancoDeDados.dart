@@ -1,6 +1,4 @@
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:path/path.dart';
-import 'package:sa2_app_tasks/Controller/notifications.dart';
 import 'package:sa2_app_tasks/Model/Usuario.dart';
 import 'package:sqflite/sqflite.dart';
 

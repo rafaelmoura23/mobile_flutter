@@ -15,7 +15,6 @@ class PaginaTasks extends StatefulWidget {
 
 class _PaginaTasksState extends State<PaginaTasks> {
   List<String> tasks = []; // Lista de tarefas
-  List<bool> taskStatus = []; // tarefas concluídas
 
   final TextEditingController _controller = TextEditingController();
   late SharedPreferences _prefs;
