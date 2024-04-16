@@ -18,9 +18,18 @@ class _PaginaCadastroState extends State<PaginaCadastro> {
     String email = _emailController.text;
     String password = _senhaController.text;
 
-    Usuario usuario = Usuario(nome: name, email: email, senha: password, id: null);
+    Usuario usuario =
+        Usuario(nome: name, email: email, senha: password, id: null);
 
     BancoDadosCrud bancoDados = BancoDadosCrud();
+
+    if(await bancoDados.existsUsuario(email, password)) {
+       ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('E-mail já cadastrado!')),
+    );
+    return;
+    }
+
     try {
       bancoDados.create(usuario);
       ScaffoldMessenger.of(context).showSnackBar(
@@ -37,7 +46,9 @@ class _PaginaCadastroState extends State<PaginaCadastro> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Página de Cadastro"),),
+      appBar: AppBar(
+        title: Text("Página de Cadastro"),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Form(

@@ -32,10 +32,18 @@ void showAlertExist(BuildContext context) {
       type: QuickAlertType.warning);
 }
 
-  void showAlertSucess(BuildContext context) {
-    QuickAlert.show(
-        context: context,
-        title: "USUÁRIO CADASTRADO COM SUCESSO!",
-        text: "Usuário adicionada com Sucesso!",
-        type: QuickAlertType.success);
-  }
+void showAlertSucess(BuildContext context) {
+  QuickAlert.show(
+      context: context,
+      title: "USUÁRIO CADASTRADO COM SUCESSO!",
+      text: "Usuário adicionada com Sucesso!",
+      type: QuickAlertType.success);
+}
+
+void showAlertExists(BuildContext context) {
+  QuickAlert.show(
+      context: context,
+      title: "Já existe um usuário com esse Email!",
+      text: "bu",
+      type: QuickAlertType.success);
+}

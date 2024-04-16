@@ -6,7 +6,6 @@ import 'package:sa2_app_tasks/View/CadastroPageView.dart';
 import 'package:sa2_app_tasks/View/TaksPageView.dart';
 
 class LoginPage extends StatefulWidget {
-  
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
@@ -107,7 +106,8 @@ class _LoginPageState extends State<LoginPage> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => PaginaTasks(email: usuario.email, nome: usuario.nome),
+              builder: (context) =>
+                  PaginaTasks(email: usuario.email, nome: usuario.nome),
             ),
           );
         } else {
@@ -131,5 +131,4 @@ class _LoginPageState extends State<LoginPage> {
   bool isValidEmail(String email) {
     return RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(email);
   }
-  
 }
