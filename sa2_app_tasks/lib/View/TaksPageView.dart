@@ -6,34 +6,36 @@ class PaginaTasks extends StatefulWidget {
   PaginaTasks({required this.email});
 
   @override
-  _PaginaTasksState createState() => _PaginaTasksState();
+  State<PaginaTasks> createState() => _PaginaTasksState(email: email);
 }
 
 class _PaginaTasksState extends State<PaginaTasks> {
   List<String> tasks = []; // Lista de tarefas
-  final TextEditingController _controller =
-      TextEditingController(); // Controlador de texto para o campo de entrada de nova tarefa
+  final TextEditingController _controller = TextEditingController();
+  late SharedPreferences _prefs;
+  String? _tasksOnlyUser;
+  String email;
+
+  _PaginaTasksState({required this.email});
 
   @override
   void initState() {
     super.initState();
-    loadTasks(); // Carrega as tarefas ao iniciar a telaa
+    _loadTasksPreferences();
   }
 
-  Future<void> loadTasks() async {
-    SharedPreferences prefs = await SharedPreferences
+  Future<void> _loadTasksPreferences() async {
+    _prefs = await SharedPreferences
         .getInstance(); // Obtém as preferências compartilhadas
     setState(() {
-      tasks = prefs.getStringList('tasks') ??
-          []; // Carrega as tarefas armazenadas ou uma lista vazia se não houver tarefas
+      tasks = _prefs.getStringList('${email}tasks') ?? [];
     });
   }
 
   Future<void> saveTasks() async {
-    SharedPreferences prefs = await SharedPreferences
+    _prefs = await SharedPreferences
         .getInstance(); // Obtém as preferências compartilhadas
-    await prefs.setStringList('tasks',
-        tasks); // Salva a lista de tarefas nas preferências compartilhadas
+    await _prefs.setStringList('${email}tasks',tasks); // Salva a lista de tarefas nas preferências compartilhadas
   }
 
   @override
