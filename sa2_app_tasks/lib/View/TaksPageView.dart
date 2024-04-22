@@ -52,7 +52,7 @@ class _PaginaTasksState extends State<PaginaTasks> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Bem vindo(a), ${nome}! 📃'),
+        title: Text('Bem vindo(a), $nome! 📃'),
       ),
       body: ListView.builder(
         itemCount: tasks.length,
