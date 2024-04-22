@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:exemplo_persistencia_json/Model/ProdutosModel.dart';
 import 'package:flutter/material.dart';
@@ -38,6 +39,14 @@ class _HomePageState extends State<HomePage> {
           .toList();
     });
   }
+
+  Future<void> _saveProdutos() async {
+    final appDocDir = await getApplicationDocumentsDirectory();
+    final filePath = '${appDocDir.path}/produtos.json';
+    final jsonList = _produtos.map((produto) => produto.toJson());
+    await File(filePath).writeAsString(json.encode(jsonList));
+  }
+
 
   @override
   Widget build(BuildContext context) {
