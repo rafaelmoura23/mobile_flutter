@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_json/View/HomeView.dart';
 
 void main() {
   runApp(const MyApp());
