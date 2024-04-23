@@ -25,6 +25,7 @@ class _HomePageState extends State<HomePage> {
     _loadProdutos();
   }
 
+  // Carrega as informações presentes no arquivo JSON
   Future<void> _loadProdutos() async {
     final data = await rootBundle.loadString('assets/produtos.json');
     final jsonList = json.decode(data) as List<dynamic>;
@@ -40,13 +41,13 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  // Salva as informações
   Future<void> _saveProdutos() async {
     final appDocDir = await getApplicationDocumentsDirectory();
     final filePath = '${appDocDir.path}/produtos.json';
     final jsonList = _produtos.map((produto) => produto.toJson());
     await File(filePath).writeAsString(json.encode(jsonList));
   }
-
 
   @override
   Widget build(BuildContext context) {
