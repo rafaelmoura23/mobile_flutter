@@ -32,6 +32,7 @@ class _ProdutosPageState extends State<ProdutosPage> {
                     return ListTile(
                       title: Text(controller.produtos[index].nome),
                       subtitle: Text(controller.produtos[index].categoria),
+                      trailing: Image.asset(controller.produtos[index].imagem),
                       onTap: () => Navigator.push(
                         context,MaterialPageRoute(
                           builder: (context) => ProdutoInfoPage(

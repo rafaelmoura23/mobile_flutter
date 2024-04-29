@@ -19,7 +19,7 @@ class ProdutoInfoPage extends StatelessWidget {
             Text('Produto: ${produto.nome}'),
             Text('Preço: '  '${produto.preco}'),
             Text('Categoria: ${produto.categoria}'),
-            Text('Imagem': )
+            Image.asset(produto.imagem),
           ],
         ),
       ),

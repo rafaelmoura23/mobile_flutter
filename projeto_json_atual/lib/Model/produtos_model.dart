@@ -2,9 +2,10 @@ class Produto {
   final String nome;
   final int preco;
   final String categoria;
+  final String imagem;
 
   // Construtor
-  Produto({required this.nome, required this.preco, required this.categoria});
+  Produto({required this.nome, required this.preco, required this.categoria, required this.imagem});
 
   // Mapeamento com chave-valor na Lista do Map, entre aspas é o nome da "coluna" no JSON que será relacionada com a variável
   // Recebe do Json e traduz pra flutter
@@ -12,7 +13,8 @@ class Produto {
     return Produto(
       nome: json['nome'],
       preco: json['preco'],
-      categoria: json['categoria']
+      categoria: json['categoria'],
+      imagem: json['imagem']
     );
   }
 
@@ -23,7 +25,8 @@ class Produto {
     return {
       'nome': nome,
       'preco': preco,
-      'categoria': categoria
+      'categoria': categoria,
+      'imagem': imagem
     };
   }
 }
