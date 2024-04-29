@@ -2,21 +2,25 @@
     {
         "nome": "Fonte 600W",
         "preco": 500,
-        "categoria": "Periféricos"
+        "categoria": "Periféricos",
+        "foto": "img/img01.jpg"
     },
     {
         "nome": "Mouse Mágico",
         "preco": 700,
-        "categoria": "Acessório"
+        "categoria": "Acessório",
+        "foto": "img/img02.jpg"
     },
     {
         "nome": "Casaco Tux",
         "preco": 100,
-        "categoria": "Vestuário"
+        "categoria": "Vestuário",
+        "foto": "img/img03.jpg"
     },
     {
         "nome": "Monitor 21'",
         "preco": 1000,
-        "categoria": "Periféricos"
+        "categoria": "Periféricos",
+        "foto": "img/img04.jpg"
     }
 ]

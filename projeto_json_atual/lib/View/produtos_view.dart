@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_json_atual/Controller/produtos_controller.dart';
+import 'package:projeto_json_atual/View/produto_info_view.dart';
 
 class ProdutosPage extends StatefulWidget {
   const ProdutosPage({super.key});
@@ -31,6 +32,11 @@ class _ProdutosPageState extends State<ProdutosPage> {
                     return ListTile(
                       title: Text(controller.produtos[index].nome),
                       subtitle: Text(controller.produtos[index].categoria),
+                      onTap: () => Navigator.push(
+                        context,MaterialPageRoute(
+                          builder: (context) => ProdutoInfoPage(
+                            produto: controller.produtos[index])),
+                          ),
                     );
                   }
                   );
