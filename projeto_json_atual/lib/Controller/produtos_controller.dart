@@ -12,6 +12,7 @@ Future<List<Produto>> loadProdutos() async {
     final data = await rootBundle.loadString('assets/produtos.json'); // 
     // DECODIFICA o conteúdo JSON em uma lista dinâmica
     final jsonList = json.decode(data) as List<dynamic>;
+    produtos.clear();
     // Converte os objetos JSON em instâncias de Produto e adiciona à lista de produtos
     produtos.addAll(jsonList.map((e) => Produto.fromJson(e)));
     return produtos;

@@ -13,5 +13,10 @@
         "nome": "Casaco Tux",
         "preco": 100,
         "categoria": "Vestuário"
+    },
+    {
+        "nome": "Monitor 21'",
+        "preco": 1000,
+        "categoria": "Periféricos"
     }
 ]
