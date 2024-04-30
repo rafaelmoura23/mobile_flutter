@@ -47,36 +47,72 @@ class _CadastrarLivrosScreenState extends State<CadastrarLivrosScreen> {
                     labelText: 'Autor',
                   ),
                   controller: _autorController,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Insira um autor';
+                    }
+                    return null;
+                  },
                 ),
                 TextFormField(
                   decoration: InputDecoration(
                     labelText: 'Editora',
                   ),
                   controller: _editoraController,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Insira uma editora';
+                    }
+                    return null;
+                  },
                 ),
                 TextFormField(
                   decoration: InputDecoration(
                     labelText: 'Sinopse',
                   ),
                   controller: _sinopseController,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Insira uma sinopse';
+                    }
+                    return null;
+                  },
                 ),
                 TextFormField(
                   decoration: InputDecoration(
                     labelText: 'Categoria',
                   ),
                   controller: _categoriaController,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Insira uma categoria';
+                    }
+                    return null;
+                  },
                 ),
                 TextFormField(
                   decoration: InputDecoration(
                     labelText: 'ISBN',
                   ),
                   controller: _isbnController,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Insira um ISBN';
+                    }
+                    return null;
+                  },
                 ),
                 TextFormField(
                   decoration: InputDecoration(
                     labelText: 'Preço',
                   ),
-                  controller: _precoController  ,
+                  controller: _precoController,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Insira um preço';
+                    }
+                    return null;
+                  },
                 ),
               ],
             ),
