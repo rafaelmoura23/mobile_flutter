@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_json/View/cadastrar_livros_view.dart';
 import 'package:projeto_json/View/home_screen_view.dart';
+import 'package:projeto_json/View/listar_livros_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,6 +18,12 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.lightGreen,
       ),
       home: const HomeScreen(),
+      debugShowCheckedModeBanner: false,
+      routes: {
+        '/home': (context) => const HomeScreen(),
+        '/cadastro':(context) => const CadastrarLivrosScreen(),
+        '/listar':(context) => const ListarLivrosScreen(),
+      },
     );
   }
 }
