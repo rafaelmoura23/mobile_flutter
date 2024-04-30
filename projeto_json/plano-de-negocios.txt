@@ -1,0 +1,20 @@
+Cadastro de Livros
+
+- Página Inicial
+    - Cadastrar Livros(Botões)
+    - Listar Livros(Botões)
+
+- Página Cadastro
+    - Formulário:
+        - ID (Serial)
+        - Titulo (Text)
+        - Autor (Text)
+        - Sinopse (Text)
+        - Categoria (Int)
+        - Capa (Text)
+        - Editora (Text)
+        - Isbn (Text)
+        - Preco (Double)
+
+- Página Listar
+    - Clicar no Botão Livros = > Abrir as informações do produto
