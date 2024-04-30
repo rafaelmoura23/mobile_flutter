@@ -10,6 +10,19 @@ class ListarLivrosScreen extends StatefulWidget {
 class _ListarLivrosScreenState extends State<ListarLivrosScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Lista de Livros'),
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(16),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [],
+          ),
+        ),
+      ),
+    );
   }
 }

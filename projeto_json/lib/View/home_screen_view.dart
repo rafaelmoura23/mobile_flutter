@@ -6,17 +6,22 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Amazon Books")),
-      body: const Padding(
+      appBar: AppBar(title: Text("Amazon Books")),
+      body: Padding(
         padding: EdgeInsets.all(16),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ElevatedButton(onPressed: onPressed, child: Text("Books List")),
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/listar');
+                  },
+                  child: Text("Books List")),
               SizedBox(height: 16),
               ElevatedButton(
-                  onPressed: onPressed, child: Text("Cadastro de Livros")),
+                  onPressed: () => Navigator.pushNamed(context, '/cadastro'),
+                  child: Text("Cadastrar Livros")),
             ],
           ),
         ),

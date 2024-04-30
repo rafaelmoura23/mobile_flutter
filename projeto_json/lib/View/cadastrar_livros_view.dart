@@ -10,6 +10,19 @@ class CadastrarLivrosScreen extends StatefulWidget {
 class _CadastrarLivrosScreenState extends State<CadastrarLivrosScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Cadastro de Livros'),
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(16),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [],
+          ),
+        ),
+      ),
+    );
   }
 }
