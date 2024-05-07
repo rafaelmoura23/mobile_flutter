@@ -17,14 +17,17 @@ class _CadastrarLivrosScreenState extends State<CadastrarLivrosScreen> {
   final TextEditingController _tituloController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
+  LivrosController _controller = new LivrosController();
+
+  File? _imagemSelecionada;
+
   TextEditingController _autorController = TextEditingController();
   TextEditingController _editoraController = TextEditingController();
   TextEditingController _sinopseController = TextEditingController();
   TextEditingController _categoriaController = TextEditingController();
   TextEditingController _isbnController = TextEditingController();
   TextEditingController _precoController = TextEditingController();
-
-  File? _imagemSelecionada;
+  
 
   @override
   Widget build(BuildContext context) {
@@ -162,8 +165,7 @@ class _CadastrarLivrosScreenState extends State<CadastrarLivrosScreen> {
     }
   }
 
-    LivrosController _controller = new LivrosController();
-    _cadastrarLivro() {
+  _cadastrarLivro() {
     final livro = Livro(
       id: _controller.listLivros.length + 1,
       titulo: _tituloController.text,
@@ -176,5 +178,25 @@ class _CadastrarLivrosScreenState extends State<CadastrarLivrosScreen> {
       capa: _imagemSelecionada!.path,
     );
     _controller.addLivro(livro);
+    _cleanController();
+    //snackbar
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Livro cadastrado com sucesso!'),
+      ),
+    );
+  }
+
+  void _cleanController() {
+    _tituloController.clear();
+    _autorController.clear();
+    _editoraController.clear();
+    _sinopseController.clear();
+    _categoriaController.clear();
+    _isbnController.clear();
+    _precoController.clear();
+    _imagemSelecionada = null;
+
+    setState(() {});
   }
 }
