@@ -20,105 +20,33 @@ class _CadastrarLivrosScreenState extends State<CadastrarLivrosScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Cadastrar Livro'),
-      ),
-      body: Center(
-        child: Padding(
-          padding: EdgeInsets.all(16),
+      appBar: AppBar(),
+      body: Padding(
+          padding: const EdgeInsets.all(12),
           child: Form(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                TextFormField(
-                  decoration: InputDecoration(
+              child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              TextFormField(
+                  controller: _tituloController,
+                  decoration: const InputDecoration(
                     labelText: 'Título do Livro',
                   ),
-                  controller: _tituloController,
                   validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'Insira um título';
+                    if (value!.trim().isEmpty) {
+                      return "Título não pode ser Vazio";
+                    } else {
+                      return null;
                     }
-                    return null;
-                  },
-                ),
-                TextFormField(
-                  decoration: InputDecoration(
-                    labelText: 'Autor',
-                  ),
-                  controller: _autorController,
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'Insira um autor';
-                    }
-                    return null;
-                  },
-                ),
-                TextFormField(
-                  decoration: InputDecoration(
-                    labelText: 'Editora',
-                  ),
-                  controller: _editoraController,
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'Insira uma editora';
-                    }
-                    return null;
-                  },
-                ),
-                TextFormField(
-                  decoration: InputDecoration(
-                    labelText: 'Sinopse',
-                  ),
-                  controller: _sinopseController,
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'Insira uma sinopse';
-                    }
-                    return null;
-                  },
-                ),
-                TextFormField(
-                  decoration: InputDecoration(
-                    labelText: 'Categoria',
-                  ),
-                  controller: _categoriaController,
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'Insira uma categoria';
-                    }
-                    return null;
-                  },
-                ),
-                TextFormField(
-                  decoration: InputDecoration(
-                    labelText: 'ISBN',
-                  ),
-                  controller: _isbnController,
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'Insira um ISBN';
-                    }
-                    return null;
-                  },
-                ),
-                TextFormField(
-                  decoration: InputDecoration(
-                    labelText: 'Preço',
-                  ),
-                  controller: _precoController,
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'Insira um preço';
-                    }
-                    return null;
-                  },
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
+                  }),
+                  SizedBox(height: 20,),
+                  ElevatedButton(child: Text("Cadastrar"),
+                  onPressed: _cadastrarLivro(),)
+            ],
+          ))),
     );
   }
+  
+  
+  _cadastrarLivro() {}
 }
