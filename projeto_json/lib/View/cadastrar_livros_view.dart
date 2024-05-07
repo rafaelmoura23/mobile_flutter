@@ -27,7 +27,6 @@ class _CadastrarLivrosScreenState extends State<CadastrarLivrosScreen> {
   TextEditingController _categoriaController = TextEditingController();
   TextEditingController _isbnController = TextEditingController();
   TextEditingController _precoController = TextEditingController();
-  
 
   @override
   Widget build(BuildContext context) {
@@ -179,6 +178,7 @@ class _CadastrarLivrosScreenState extends State<CadastrarLivrosScreen> {
     );
     _controller.addLivro(livro);
     _cleanController();
+    _controller.salvarJson();
     //snackbar
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
