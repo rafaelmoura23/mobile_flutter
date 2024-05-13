@@ -17,7 +17,7 @@ class ProdutoInfoPage extends StatelessWidget {
         child: Column(
           children: [
             Text('Produto: ${produto.nome}'),
-            Text('Preço: '  '${produto.preco}'),
+            Text('Preço: R'  '${produto.preco}'),
             Text('Categoria: ${produto.categoria}'),
             Image.asset(produto.imagem),
           ],
