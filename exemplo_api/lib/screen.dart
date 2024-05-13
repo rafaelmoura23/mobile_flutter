@@ -22,7 +22,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
   void initState() {
     super.initState();
     // _weatherService.getWeather('Rio de Janeiro');
-    _fetchWeatherData('Rio de Janeiro');
+    _fetchWeatherData('London');
   }
 
   Future<void> _fetchWeatherData(String city) async {
@@ -41,26 +41,48 @@ class _WeatherScreenState extends State<WeatherScreen> {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController _controllerWeather = new TextEditingController();
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Weather Forecat'),
+          title: const Text('Weather Forecast'),
         ),
-        body: _weatherData == null
-            ? const Center(
-                child: CircularProgressIndicator(),
-              )
-            : Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                        'City: ${_weatherData['name']}'), // Exibe o nome da cidade.
-                    Text(
-                        'Temperature: ${_weatherData['main']['temp'] - 273} °C'), // Exibe a temperatura em graus Celsius.
-                    Text(
-                        'Description: ${_weatherData['weather'][0]['description']}'),
-                  ],
-                ),
-              ));
+        body: Padding(
+          padding: const EdgeInsets.all(12),
+          child: Center(
+              child: Column(
+            children: [
+              _weatherData == null
+                  ? Center(
+                      child: CircularProgressIndicator(),
+                    )
+                  : Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                              'City: ${_weatherData['name']}'), // Exibe o nome da cidade.
+                          Text(
+                              'Temperature: ${(_weatherData['main']['temp'] - 273.16).toStringAsFixed(2)} °C'),
+                          // Exibe a temperatura em graus Celsius.
+                          Text(
+                              'Description: ${_weatherData['weather'][0]['description']}'),
+                        ],
+                      ),
+                    ),
+              Column(
+                children: [
+                  TextFormField(
+                    controller: _controllerWeather,
+                  ),
+                  ElevatedButton(
+                      onPressed: () {
+                        _fetchWeatherData(_controllerWeather.text);
+                      },
+                      child: const Text("Pesquisar"))
+                ],
+              ),
+            ],
+          )),
+        ));
   }
 }

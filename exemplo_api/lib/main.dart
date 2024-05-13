@@ -1,3 +1,4 @@
+import 'package:exemplo_api/screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,10 +12,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Weather Forecast',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: WeatherScreen(),
+      home: const WeatherScreen(),
     );
   }
 }
