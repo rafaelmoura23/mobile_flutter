@@ -1,22 +1,15 @@
-import 'dart:convert';
-import 'package:http/http.dart' as http;
+import 'package:flutter/material.dart';
 
-class WeatherService {
-  final String apiKey;
-  final String baseUrl;
+class WeatherScreen extends StatefulWidget {
+  const WeatherScreen({super.key});
 
-  WeatherService({required this.apiKey, required this.baseUrl});
+  @override
+  State<WeatherScreen> createState() => _WeatherScreenState();
+}
 
-  Future<Map<String, dynamic>> getWeather(String city)
-  async {
-    final url = Uri.parse('$baseUrl/weather?q=$city&appid=$apiKey');
-    final response = await http.get(url);
-
-    if(response.statusCode == 200){
-      return jsonDecode(response.body);
-    } else {
-      throw Exception('Failed to load wather data');
-
-    }
+class _WeatherScreenState extends State<WeatherScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
   }
 }
