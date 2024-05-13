@@ -16,13 +16,14 @@ class _WeatherScreenState extends State<WeatherScreen> {
         'https://api.openweathermap.org/data/2.5', // URL base da API de previsão do tempo.
   );
 
+
   late Map<String, dynamic> _weatherData;
 
   @override
   void initState() {
     super.initState();
     // _weatherService.getWeather('Rio de Janeiro');
-    _fetchWeatherData('London');
+    _fetchWeatherData('Limeira');
   }
 
   Future<void> _fetchWeatherData(String city) async {
