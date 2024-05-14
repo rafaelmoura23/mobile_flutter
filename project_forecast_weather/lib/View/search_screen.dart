@@ -59,6 +59,7 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     TextEditingController _controllerWeather = new TextEditingController();
+    String temp = 'Temperature: ${(_weatherData['main']['temp'] - 273.16).toStringAsFixed(2)} °C';
     return Scaffold(
         appBar: AppBar(
           title: const Text('Weather Forecast'),
@@ -68,38 +69,96 @@ class _SearchScreenState extends State<SearchScreen> {
           child: Center(
               child: Column(
             children: [
-              _weatherData == null
-                  ? Center(
-                      child: CircularProgressIndicator(),
-                    )
-                  : Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text('City: ${_weatherData['name']}'),
-                          Text(
-                              'Country: ${_weatherData['sys']['country']}'), // Exibe o nome da cidade.
-                          Text(
-                              'Temperature: ${(_weatherData['main']['temp'] - 273.16).toStringAsFixed(2)} °C'),
-                          Text(
-                              'Feels Like: ${(_weatherData['main']['feels_like'] - 273.16).toStringAsFixed(2)} °C'),
-                          // Exibe a temperatura em graus Celsius.
-                          Text(
-                              'Description: ${_weatherData['weather'][0]['description']}'),
-                          Text(
-                              'Wind Speed: ${_weatherData['wind']['speed']} m/s'),
-                          Text(
-                              'Humidity: ${_weatherData['main']['humidity']}%'),
-                          Text(
-                              'Pressure: ${_weatherData['main']['pressure']} mb'),
-                        ],
+              Container(
+                child: _weatherData == null
+                    ? const Center(
+                        child: CircularProgressIndicator(),
+                      )
+                    : Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'City: ${_weatherData['name']}',
+                              style: const TextStyle(
+                                fontSize: 20,
+                                fontFamily: AutofillHints.sublocality,
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 31, 31, 31),
+                              ),
+                            ),
+                            Text(
+                              'Country: ${_weatherData['sys']['country']}',
+                              style: const TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500,
+                                color: Color.fromARGB(255, 31, 31, 31),
+                              ),
+                            ),
+                            Text(
+                              '${temp}',
+                              style: const TextStyle(
+                                fontSize: 18,
+                                color: Color.fromARGB(255, 31, 31, 31),
+                              ),
+                            ),
+                            Text(
+                              'Feels Like: ${(_weatherData['main']['feels_like'] - 273.16).toStringAsFixed(2)} °C',
+                              style: const TextStyle(
+                                fontSize: 18,
+                                color: Color.fromARGB(255, 31, 31, 31),
+                              ),
+                            ),
+                            Text(
+                              'Description: ${_weatherData['weather'][0]['description']}',
+                              style: const TextStyle(
+                                fontSize: 18,
+                                fontStyle: FontStyle.italic,
+                                color: Color.fromARGB(255, 31, 31, 31),
+                              ),
+                            ),
+                            Text(
+                              'Wind Speed: ${_weatherData['wind']['speed']} m/s',
+                              style: const TextStyle(
+                                fontSize: 18,
+                                color: Color.fromARGB(255, 31, 31, 31),
+                              ),
+                            ),
+                            Text(
+                              'Humidity: ${_weatherData['main']['humidity']}%',
+                              style: const TextStyle(
+                                fontSize: 18,
+                                color: Color.fromARGB(255, 31, 31, 31),
+                              ),
+                            ),
+                            Text(
+                              'Pressure: ${_weatherData['main']['pressure']} mb',
+                              style: const TextStyle(
+                                fontSize: 18,
+                                color: Color.fromARGB(255, 31, 31, 31),
+                              ),
+                            ),
+                            (_weatherData['main']['temp'] - 273.16) < 15
+                                ? Image.asset('assets/img/Weather-cold.png',
+                                    width: 300, height: 300)
+                                : (_weatherData['main']['temp'] - 273.16) < 25
+                                    ? Image.asset('assets/img/Weather-wind.png',
+                                        width: 300, height: 300)
+                                    : Image.asset('assets/img/Weather-hot.png',
+                                        width: 300, height: 300),
+                            
+                          ],
+                          
+                        ),
+                        
                       ),
-                    ),
+              ),
               Column(
                 children: [
                   TextFormField(
                     controller: _controllerWeather,
                   ),
+                  SizedBox(height: 16),
                   ElevatedButton(
                       onPressed: () {
                         _fetchWeatherData(_controllerWeather.text);
