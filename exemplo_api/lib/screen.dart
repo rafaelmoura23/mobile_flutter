@@ -1,5 +1,6 @@
 import 'package:exemplo_api/service.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 
 class WeatherScreen extends StatefulWidget {
   const WeatherScreen({super.key});
@@ -16,14 +17,29 @@ class _WeatherScreenState extends State<WeatherScreen> {
         'https://api.openweathermap.org/data/2.5', // URL base da API de previsão do tempo.
   );
 
-
   late Map<String, dynamic> _weatherData;
 
   @override
   void initState() {
     super.initState();
     // _weatherService.getWeather('Rio de Janeiro');
-    _fetchWeatherData('Limeira');
+    // _fetchWeatherData('Limeira');
+    _fetchWeatherGeo();
+  }
+
+  Future<void> _fetchWeatherGeo() async {
+    try {
+      Position position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high,
+      );
+      final weatherData = await _weatherService.getWeatherbyLocation(
+          position.latitude, position.longitude);
+      setState(() {
+        _weatherData = weatherData;
+      });
+    } catch (e) {
+      print(e);
+    }
   }
 
   Future<void> _fetchWeatherData(String city) async {
