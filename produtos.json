@@ -22,5 +22,11 @@
         "preco": 1000,
         "categoria": "Periféricos",
         "imagem": "assets/img/img04.jpg"
+    },
+    {
+        "nome": "Monitor 21'",
+        "preco": 1000,
+        "categoria": "Periféricos",
+        "imagem": "assets/img/img04.jpg"
     }
 ]
