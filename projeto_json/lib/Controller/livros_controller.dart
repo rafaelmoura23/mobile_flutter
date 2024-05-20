@@ -23,6 +23,5 @@ class LivrosController {
     File file = File("$path/livros.json");
     String json = jsonEncode(_listLivros);
     await file.writeAsString(json);
-    
   }
 }
