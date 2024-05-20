@@ -9,7 +9,7 @@ class ProdutosController {
   Future<List<Produto>> loadProdutos() async {
     try {
       // URL do arquivo JSON na nuvem
-      final String url = 'https://raw.githubusercontent.com/rafaelmoura23/mobile_flutter/main/produtos.json';
+      final String url = 'https://github.com/rafaelmoura23/mobile_flutter/blob/main/produtos.json';
 
       // Faz a solicitação HTTP para obter o conteúdo do arquivo JSON
       final response = await http.get(Uri.parse(url));
