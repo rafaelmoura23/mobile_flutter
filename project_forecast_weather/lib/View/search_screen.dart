@@ -23,7 +23,7 @@ class _SearchScreenState extends State<SearchScreen> {
   void initState() {
     super.initState();
     // _weatherService.getWeather('Rio de Janeiro');
-    // _fetchWeatherData('Limeira');
+    _fetchWeatherData('Limeira');
     _fetchWeatherGeo();
   }
 
