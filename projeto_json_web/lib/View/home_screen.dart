@@ -6,7 +6,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Weather Forecast App")),
+      appBar: AppBar(title: Text("Lista de Produtos")),
       body: Container(
         color: Color.fromARGB(255, 176, 190, 197), // Define a cor de fundo como azul
         child: Padding(
@@ -15,11 +15,6 @@ class HomeScreen extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset( // Adiciona a imagem ao centro
-                  'assets/img/Weather-temperature.png', // substitua pelo caminho da sua imagem
-                  width: 300, // ajuste o tamanho conforme necessário
-                  height: 300,
-                ),
                 SizedBox(height: 16),
                 ElevatedButton(
                   onPressed: () {
@@ -29,7 +24,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 16),
                 ElevatedButton(
-                  onPressed: () => Navigator.pushNamed(context, '/lista'),
+                  onPressed: () => Navigator.pushNamed(context, '/view'),
                   child: Text("Produtos"),
                 ),
               ],

@@ -16,6 +16,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.amber
       ),
       home: const ProdutosPage(),
+      // routes: {
+      //   '/view':(context) => const ProdutosPage(),
+      //   // '/cadastro':(context) => const CadastroPage()
+      // },
     );
   }
 }

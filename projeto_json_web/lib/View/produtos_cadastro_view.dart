@@ -102,5 +102,8 @@ class _CadastroViewState extends State<CadastroView> {
       ),
     );
   }
+  register() {
+    
+  }
 }
 

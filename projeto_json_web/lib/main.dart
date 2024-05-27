@@ -21,8 +21,8 @@ class MyApp extends StatelessWidget {
       home: const HomeScreen(),
       debugShowCheckedModeBanner: false,
       routes: {
-        '/home':(context) => const HomeScreen(),
         '/cadastro':(context) => CadastroView(),
+        '/view': (context) => const ProdutosPage()
       },
     );
   }
