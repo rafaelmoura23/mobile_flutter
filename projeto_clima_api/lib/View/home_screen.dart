@@ -15,6 +15,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     // TODO: implement initState
+    _getWeather();
     super.initState();
   }
 
@@ -59,9 +60,8 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             const SizedBox(height: 20),
             //construir a exibição do clima(geolocalização)
-            FutureBuilder(
-                future: _getWeather(),
-                builder: (context, snapshot) {
+            Builder(
+                builder: (context) {
                   if (_controller.weatherList.isEmpty) {
                     return Column(children: [
                       const Text("Localização Não Encontrada"),

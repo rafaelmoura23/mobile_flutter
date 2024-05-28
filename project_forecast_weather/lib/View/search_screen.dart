@@ -12,7 +12,7 @@ class SearchScreen extends StatefulWidget {
 class _SearchScreenState extends State<SearchScreen> {
   final WeatherService _weatherService = WeatherService(
     apiKey:
-        '681126f28e7d6fa3a7cfe0da0671e599', // Chave de API para acesso à API de previsão do tempo.
+        '9a180e5bbd3fbe3fd2b5cd74cb5bfc6f', // Chave de API para acesso à API de previsão do tempo.
     baseUrl:
         'https://api.openweathermap.org/data/2.5', // URL base da API de previsão do tempo.
   );
