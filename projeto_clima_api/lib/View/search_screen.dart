@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:projeto_clima_api/Controller/weather_controller.dart';
-import 'package:projeto_clima_api/Service/weather_service.dart';
+import 'package:projeto_clima_api/View/details_weather_screen.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -11,143 +10,73 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
-  late Map<String, dynamic> _weatherData;
+  final _formKey = GlobalKey<FormState>();
+  final TextEditingController _cityController = TextEditingController();
   final WeatherController _controller = WeatherController();
-  final WeatherService _weatherService = WeatherService();
-
-  @override
-  void initState() {
-    super.initState();
-    // _weatherService.getWeather('Rio de Janeiro');
-    // _fetchWeatherData('Limeira');
-    _getWeatherData("Limeira");
-  }
-
-  Future<void> _getWeather() async {
-    try {
-      Position _position = await Geolocator.getCurrentPosition();
-      print(_position.latitude);
-      print(_position.longitude);
-      _controller.getWeatherbyLocation(_position.latitude, _position.longitude);
-      setState(() {});
-    } catch (e) {
-      print(e);
-    }
-  }
-
-  Future<void> _getWeatherData(String city) async {
-    try {
-      final weatherData = await _weatherService.getWeather(city);
-      setState(() {
-        _weatherData = weatherData;
-      });
-    } catch (e) {
-      print(e);
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController _controllerWeather = new TextEditingController();
-    String temp =
-        'Temperature: ${(_weatherData['main']['temp'] - 273.16).toStringAsFixed(2)} °C';
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Weather Forecast'),
-        ),
-        body: Padding(
-          padding: const EdgeInsets.all(12),
-          child: Center(
+      appBar: AppBar(
+        title: const Text("Search a City"),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(12),
+        child: Center(
+          child: Form(
+              key: _formKey,
               child: Column(
-            children: [
-              Container(
-                child: _weatherData == null
-                    ? const Center(
-                        child: CircularProgressIndicator(),
-                      )
-                    : Center(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              'City: ${_weatherData['name']}',
-                              style: const TextStyle(
-                                fontSize: 20,
-                                fontFamily: AutofillHints.sublocality,
-                                fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 31, 31, 31),
-                              ),
-                            ),
-                            Text(
-                              'Country: ${_weatherData['sys']['country']}',
-                              style: const TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w500,
-                                color: Color.fromARGB(255, 31, 31, 31),
-                              ),
-                            ),
-                            Text(
-                              '${temp}',
-                              style: const TextStyle(
-                                fontSize: 18,
-                                color: Color.fromARGB(255, 31, 31, 31),
-                              ),
-                            ),
-                            Text(
-                              'Feels Like: ${(_weatherData['main']['feels_like'] - 273.16).toStringAsFixed(2)} °C',
-                              style: const TextStyle(
-                                fontSize: 18,
-                                color: Color.fromARGB(255, 31, 31, 31),
-                              ),
-                            ),
-                            Text(
-                              'Description: ${_weatherData['weather'][0]['description']}',
-                              style: const TextStyle(
-                                fontSize: 18,
-                                fontStyle: FontStyle.italic,
-                                color: Color.fromARGB(255, 31, 31, 31),
-                              ),
-                            ),
-                            Text(
-                              'Wind Speed: ${_weatherData['wind']['speed']} m/s',
-                              style: const TextStyle(
-                                fontSize: 18,
-                                color: Color.fromARGB(255, 31, 31, 31),
-                              ),
-                            ),
-                            Text(
-                              'Humidity: ${_weatherData['main']['humidity']}%',
-                              style: const TextStyle(
-                                fontSize: 18,
-                                color: Color.fromARGB(255, 31, 31, 31),
-                              ),
-                            ),
-                            Text(
-                              'Pressure: ${_weatherData['main']['pressure']} mb',
-                              style: const TextStyle(
-                                fontSize: 18,
-                                color: Color.fromARGB(255, 31, 31, 31),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-              ),
-              Column(
-                children: [
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
                   TextFormField(
-                    controller: _controllerWeather,
+                    controller: _cityController,
+                    decoration:
+                        const InputDecoration(hintText: "Enter the city name"),
+                    validator: (value) {
+                      if (value!.trim().isEmpty) {
+                        return "Please enter a city";
+                      }
+                      return null;
+                    },
                   ),
-                  SizedBox(height: 16),
                   ElevatedButton(
                       onPressed: () {
-                        _getWeatherData(_controllerWeather.text);
+                        if (_formKey.currentState!.validate()) {
+                          _cityFind(_cityController.text);
+                        }
                       },
-                      child: const Text("Pesquisar"))
+                      child: Text("Search"))
                 ],
-              ),
-            ],
-          )),
-        ));
+              )),
+        ),
+      ),
+    );
+  }
+
+Future<void> _cityFind(String city) async {
+    if (await _controller.findCity(city)) {
+      //snackbar
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("City found"),
+          duration: Duration(seconds: 1),
+        ),
+      );
+      //navigation to details
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => WeatherDetailsScreen(cityName: city)));
+    }else{
+      // snackbar
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("City not found"),
+          duration: Duration(seconds: 2),
+        ),
+      );
+      _cityController.clear();
+    }
   }
 }
+

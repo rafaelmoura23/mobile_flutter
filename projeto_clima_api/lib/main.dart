@@ -20,8 +20,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/home':(context) => const HomeScreen(),
         '/favorites':(context) => const FavoritesScreen(),
-        '/search':(context) => const SearchScreen(),
-        '/details':(context) => const WeatherDetailsScreen()
+        '/search':(context) => const SearchScreen()
       },
     );
   }

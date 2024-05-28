@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class WeatherDetailsScreen extends StatefulWidget {
-  const WeatherDetailsScreen({super.key});
+  final String cityName;
+  const WeatherDetailsScreen({super.key, required this.cityName});
 
   @override
   State<WeatherDetailsScreen> createState() => _WeatherDetailsScreenState();
