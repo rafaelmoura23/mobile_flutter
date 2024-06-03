@@ -1,6 +1,6 @@
 class Produto {
   // atributos
-  final int id;
+  final String id;
   final String nome;
   final double preco;
 
@@ -19,8 +19,8 @@ class Produto {
   factory Produto.fromJson(Map<String, dynamic> json) {
     return Produto(
       id: json['id'],
-      nome: json['nome'],
-      preco: json['preco'],
+      nome: json['nome'].toString(),
+      preco: json['preco'].toDouble(),
     );
   }
 }
