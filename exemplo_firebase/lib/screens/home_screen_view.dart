@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -12,26 +11,26 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Firebase Aplication")),
+      appBar: AppBar(title: const Text("Firebase Aplication")),
       body: Container(
-        color: Color.fromARGB(255, 233, 180, 35),
+        color: Color.fromARGB(255, 255, 174, 0),
         child: Padding(
-          padding: EdgeInsets.all(16),
+          padding: const EdgeInsets.all(16),
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
                 ElevatedButton(
                   onPressed: () {
                     Navigator.pushNamed(context, '/cadastro');
                   },
-                  child: Text("Cadastro"),
+                  child: const Text("Cadastro"),
                 ),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
                 ElevatedButton(
                   onPressed: () => Navigator.pushNamed(context, '/login'),
-                  child: Text("Login"),
+                  child: const Text("Login"),
                 ),
               ],
             ),
