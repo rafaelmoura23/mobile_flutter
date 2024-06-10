@@ -11,6 +11,16 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final MusicService _musicService = MusicService();
 
+Future<void> _musicList() async {
+  try {
+    await _musicService.fetchListMusic();
+    setState(() {
+      
+    });
+  } catch (e) {
+    print(e.toString());
+  }
+}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
       Padding(padding: EdgeInsets.all(8),
       child: Center(
         child: FutureBuilder(
-          future: _musicService.fetchListMusic(), 
+          future: _musicList(), 
           builder: (context,snapshot){
             if(_musicService.listMusic.isNotEmpty){
               return ListView.builder(

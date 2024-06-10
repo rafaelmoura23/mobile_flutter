@@ -15,5 +15,17 @@
             "nome": "Produto 3",
             "preco": 30.00
         }
-    ]
+    ],
+    "music": [
+        {
+          "title": "Musica1",
+          "artist": "Artista1",
+          "url": "http://"
+        },
+        {
+          "title": "Musica2",
+          "artist": "Artista2",
+          "url": "http://"
+        }
+      ]
 }

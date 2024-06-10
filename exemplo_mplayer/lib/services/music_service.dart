@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class MusicService {
-  final Uri url = "http://url do json";
+  final Uri url = "http://url do json" as Uri;
 
   List<MusicModel> _listMusic = [];
   List<MusicModel> get listMusic => _listMusic;
