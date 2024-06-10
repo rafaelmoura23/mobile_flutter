@@ -17,14 +17,11 @@ class AuthService {
   }
 
   // create a new user
-  Future<User?> registerWithEmail(String email, String password) async {
+  Future<void> registerWithEmail(String email, String password) async {
     try {
-      UserCredential result = await _auth.createUserWithEmailAndPassword(email: email, password: password);
-      User? user = result.user;
-      return user;
+      await _auth.createUserWithEmailAndPassword(email: email, password: password);
     } catch (e) {
       print(e.toString());
-      return null;
     }
   }
 

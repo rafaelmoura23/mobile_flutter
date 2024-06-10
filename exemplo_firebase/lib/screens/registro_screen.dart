@@ -1,9 +1,8 @@
-
-import 'package:exemplo_firebase/service/auth_service.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
+import '../service/auth_service.dart';
 
 class RegistroScreen extends StatefulWidget {
   const RegistroScreen({super.key});
@@ -31,6 +30,7 @@ class _RegistroScreenState extends State<RegistroScreen> {
           child: Form(
               key: _formKey,
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                   //campos do form
                   children: <Widget>[
                     TextFormField(
@@ -64,11 +64,12 @@ class _RegistroScreenState extends State<RegistroScreen> {
     );
   }
 
-  Future<User?> _registrar() async {
-    if (_confirmPasswordController == _passwordController) {
+  Future<void> _registrar() async {
+    if (_confirmPasswordController.text == _passwordController.text) {
       if (_formKey.currentState!.validate()) {
-        return _authService.registerWithEmail(
+        _authService.registerWithEmail(
             _emailController.text, _confirmPasswordController.text);
+            Navigator.pushNamed(context, '/login');
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
