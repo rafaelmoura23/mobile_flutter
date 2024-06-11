@@ -1,31 +1,31 @@
 {
-    "produtos": [
-        {
-            "id": 1,
-            "nome": "Produto 1",
-            "preco": 10.00
-        },
-        {
-            "id": 2,
-            "nome": "Produto 2",
-            "preco": 20.00
-        },
-        {
-            "id": 3,
-            "nome": "Produto 3",
-            "preco": 30.00
-        }
-    ],
-    "music": [
-        {
-          "title": "Musica1",
-          "artist": "Artista1",
-          "url": "http://"
-        },
-        {
-          "title": "Musica2",
-          "artist": "Artista2",
-          "url": "http://"
-        }
-      ]
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Produto 1",
+      "preco": 10.00
+    },
+    {
+      "id": 2,
+      "nome": "Produto 2",
+      "preco": 20.00
+    },
+    {
+      "id": 3,
+      "nome": "Produto 3",
+      "preco": 30.00
+    }
+  ],
+  "music": [
+    {
+      "title": "What I've Done",
+      "artist": "Linkin Park",
+      "url": "https://drive.google.com/uc?1si2p_iShoQeISEIVVYFQVm85aA3WFkQ8"
+    },
+    {
+      "title": "The Chain",
+      "artist": "Fleetwood Mac",
+      "url": "https://drive.google.com/uc?id=1wLGp0WD088BJy85ynGYdNHlCKhQqFZBN"
+    }
+  ]
 }

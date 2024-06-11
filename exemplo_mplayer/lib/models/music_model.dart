@@ -1,17 +1,17 @@
 class MusicModel {
+  //atributos
   final String title;
-  final String url;
   final String artist;
+  final String url;
 
-  // construtor
-  MusicModel({required this.title, required this.url, required this.artist});
+  MusicModel({required this.title, required this.artist, required this.url});
 
-  // fromJson
-  factory MusicModel.fromJson(Map<String, dynamic> json) {
+  //fromMap
+  factory MusicModel.fromMap(Map<String, dynamic> map) {
     return MusicModel(
-      title: json['title'],
-      url: json['url'],
-      artist: json['artist'],
+      title: map['title'],
+      artist: map['artist'],
+      url: map['url'],
     );
   }
 }
