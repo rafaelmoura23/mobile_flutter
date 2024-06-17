@@ -13,6 +13,7 @@ dependencies:
   firebase_messaging: ^15.0.0
   flutter:
     sdk: flutter
+  quickalert: ^1.1.0
 
 dev_dependencies:
   flutter_test:

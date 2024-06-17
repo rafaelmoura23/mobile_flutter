@@ -3,6 +3,7 @@ import 'package:exemplo_firebase/models/todolist.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+import '../controllers/notifications.dart';
 import '../service/auth_service.dart';
 
 class TodolistScreen extends StatefulWidget {
@@ -14,74 +15,121 @@ class TodolistScreen extends StatefulWidget {
 }
 
 class _TodolistScreenState extends State<TodolistScreen> {
+  final AuthService _service = AuthService();
   final TodolistController _controller = TodolistController();
   final TextEditingController _tituloController = TextEditingController();
+  bool _isList = false;
 
-  @override
-  void initState() {
-    super.initState();
-    _loadTodolist();
-  }
-
-  Future<void> _loadTodolist() async {
-    await _controller.listar('user123'); // Substitua 'user123' pelo ID do usuário real
-    setState(() {});
-  }
-
-  Future<void> _addTodolist() async {
-    if (_tituloController.text.isNotEmpty) {
-      Todolist newTodo = Todolist(
-        id: DateTime.now().millisecondsSinceEpoch.toString(),
-        titulo: _tituloController.text,
-        userId: 'user123', // Substitua 'user123' pelo ID do usuário real
-        timestamp: DateTime.now(),
-      );
-      await _controller.add(newTodo);
-      _tituloController.clear();
-      _loadTodolist();
+  Future<void> _getList() async {
+    try {
+      await _controller.fetchList(widget.user.uid);
+    } catch (e) {
+      print(e.toString());
     }
-  }
-
-  Future<void> _deleteTodolist(String id) async {
-    await _controller.delete(id);
-    _loadTodolist();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Todolist'),
-      ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextField(
-              controller: _tituloController,
-              decoration: InputDecoration(
-                labelText: 'Adicionar Tarefa',
-                suffixIcon: IconButton(
-                  icon: Icon(Icons.add),
-                  onPressed: _addTodolist,
-                ),
+        appBar: AppBar(title: const Text('Todo List Firebase'), actions: [
+          IconButton(
+              icon: const Icon(Icons.logout),
+              onPressed: () async {
+                //chamar o logout
+                await _service.signOut();
+                Navigator.pushReplacementNamed(context, '/home');
+              })
+        ]),
+        body: Padding(
+          padding: const EdgeInsets.all(8),
+          child: Center(
+              child: Column(
+            children: [
+              Expanded(
+                child: FutureBuilder(
+                    future: _getList(),
+                    builder: (context, snapshot) {
+                      if (_controller.list.isNotEmpty) {
+                        return ListView.builder(
+                          itemCount: _controller.list.length,
+                          itemBuilder: (context, index) {
+                            return ListTile(
+                              title: Text(_controller.list[index].titulo),
+                              trailing: IconButton(
+                                icon: const Icon(Icons.delete),
+                                onPressed: () async {
+                                  await _controller
+                                      .delete(_controller.list[index].id);
+                                  _getList();
+                                  setState(() {});
+                                },
+                              ),
+                            );
+                          },
+                        );
+                      } else if (snapshot.hasError) {
+                        return Text(snapshot.error.toString());
+                      } else {
+                        return Center(
+                          child: _isList
+                              ? CircularProgressIndicator()
+                              : Text('Lista Vazia'),
+                        );
+                      }
+                    }),
               ),
-            ),
-          ),
-          Expanded(
-            child: ListView.builder(
-              itemCount: _controller.list.length,
-              itemBuilder: (context, index) {
-                Todolist todo = _controller.list[index];
-                return ListTile(
-                  title: Text(todo.titulo),
-                  onLongPress: () => _deleteTodolist(todo.id),
-                );
-              },
-            ),
-          ),
-        ],
-      ),
-    );
+            ],
+          )),
+        ),
+        floatingActionButton: FloatingActionButton(
+            child: const Icon(Icons.add),
+            onPressed: () {
+              showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog(
+                        title: const Text("Nova Tarefa"),
+                        content: TextFormField(
+                          controller: _tituloController,
+                          decoration:
+                              InputDecoration(hintText: "Digite a tarefa"),
+                        ),
+                        actions: [
+                          TextButton(
+                            child: Text("Cancelar"),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                          ),
+                          TextButton(
+                              child: Text("Salvar"),
+                              onPressed: () {
+                                if (_tituloController.text.trim().isEmpty) {
+                                  showAlert(context);
+                                  return; // Retorna sem adicionar a tarefa se estiver vazio
+                                }
+                                bool existsTask = _controller.list.any((task) =>
+                                    task.titulo == _tituloController.text);
+                                if (existsTask) {
+                                  showAlertExist(context);
+                                  return; // Retorna sem adicionar a tarefa se já existir uma com o mesmo título
+                                }
+
+                                Navigator.of(context).pop();
+                                Todolist add = Todolist(
+                                    id: (_controller.list.length + 1)
+                                        .toString(),
+                                    titulo: _tituloController.text,
+                                    userId: widget.user.uid,
+                                    timestamp: DateTime.now());
+                                _controller.add(add);
+                                _tituloController.clear();
+                                _getList();
+                                showAlertSucess(context);
+                                setState(() {});
+                              })
+                        ]);
+                  });
+            }));
   }
 }

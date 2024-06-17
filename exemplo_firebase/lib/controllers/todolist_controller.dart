@@ -3,34 +3,34 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '../models/todolist.dart';
 
 class TodolistController{
+  //atributo list
   List<Todolist> _list = [];
   List<Todolist> get list => _list;
-  //classe firebase firestore
+
+  //conectar ao firebase FireStore
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  //métodos 
+  //métodos
   //add
-  Future<void> add(Todolist todo) async{
-    await _firestore.collection('todolist').add(todo.toMap());
+  Future<void> add(Todolist todolist) async{
+    await _firestore.collection('todolist').add(todolist.toMap());
   }
-
-  //delete
+  //deletar
   Future<void> delete(String id) async{
     await _firestore.collection('todolist').doc(id).delete();
   }
-
-  //listar
-  Future<List<Todolist>> listar(String userId) async{
-    final result = await _firestore
-        .collection('todolist')
-        .where('userId', isEqualTo: userId)
-        .orderBy('timestamp', descending: true)
-        .get();
-
-
-    _list = result.docs.map((doc) => 
-    Todolist.fromJson(doc.data())).toList();
-    
-    return _list;
+  //fetch list
+  Future<List<Todolist>> fetchList(String userId) async{
+    final QuerySnapshot result = await _firestore.collection(
+      'todolist')
+      .where(
+        'userid',
+         isEqualTo: userId)
+         .get();
+    List<dynamic> convert = result.docs as List;
+    _list = convert.map((doc) => Todolist.fromMap(doc.data(),doc.id)).toList();
+    return _list;    
   }
+
+
 }
