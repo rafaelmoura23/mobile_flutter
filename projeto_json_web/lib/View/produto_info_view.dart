@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_json_atual/Model/produtos_model.dart';
 
-// ignore: must_be_immutable
-class ProdutoInfoPage extends StatefulWidget {
-  Produto produto;
+class ProdutoInfoPage extends StatelessWidget {
+  final Produto produto;
+
   ProdutoInfoPage({
-    required this.produto
-    });
+    required this.produto,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,20 +16,16 @@ class ProdutoInfoPage extends StatefulWidget {
       ),
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text('Produto: ${produto.nome}'),
-            Text('Preço: R'  '${produto.preco}'),
+            Text('Preço: R\$ ${produto.preco}'),
             Text('Categoria: ${produto.categoria}'),
             Image.asset(produto.imagem),
           ],
         ),
       ),
     );
-  }
-  
-  @override
-  State<StatefulWidget> createState() {
-    // TODO: implement createState
-    throw UnimplementedError();
   }
 }

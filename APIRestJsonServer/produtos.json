@@ -1,0 +1,34 @@
+{
+    "produtos": [
+        {
+            "nome": "Fonte 600W",
+            "preco": 500,
+            "categoria": "Periféricos",
+            "imagem": "assets/img/img01.jpg"
+        },
+        {
+            "nome": "Mouse Mágico",
+            "preco": 700,
+            "categoria": "Acessório",
+            "imagem": "assets/img/img02.jpg"
+        },
+        {
+            "nome": "Casaco Tux",
+            "preco": 100,
+            "categoria": "Vestuário",
+            "imagem": "assets/img/img03.jpg"
+        },
+        {
+            "nome": "Monitor 21'",
+            "preco": 1000,
+            "categoria": "Periféricos",
+            "imagem": "assets/img/img04.jpg"
+        },
+        {
+            "nome": "Teclado'",
+            "preco": 1500,
+            "categoria": "Periféricos",
+            "imagem": "assets/img/img04.jpg"
+        }
+    ]
+}

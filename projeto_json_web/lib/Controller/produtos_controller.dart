@@ -1,14 +1,12 @@
 import 'dart:convert';
-import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:projeto_json_atual/Model/produtos_model.dart';
-import 'package:path_provider/path_provider.dart';
 
 class ProdutosController {
   // atributos -> lista vazia
   List<Produto> produtos = [];
   // URL do arquivo JSON na nuvem
-  final String url = 'http://10.109.207.149:3000/produtos';
+  final String url = 'http://10.109.195.197:3000/produtos';
 
   Future<List<Produto>> loadProdutos() async {
     try {
@@ -45,5 +43,47 @@ class ProdutosController {
     }
     return false;
   }
+
+  Future<bool> deletarProduto(Produto produto) async {
+  final String id = produto.id; // Obter ID do produto a ser deletado
+  final String urlDelecao = '$url/$id'; // Formar URL com o ID
+
+  final response = await http.delete(Uri.parse(urlDelecao));
+
+  if (response.statusCode == 200) {
+    // Remover o produto da lista local
+    produtos.removeWhere((prod) => prod.id == id);
+    return true;
+  } else {
+    // Se a requisição falhar, retornar falso
+    return false;
+  }
+}
+
+Future<bool> atualizarProduto(Produto produto) async {
+  final String id = produto.id; // Obter ID do produto a ser atualizado
+  final String urlAtualizacao = '$url/$id'; // Formar URL com o ID
+  final String json = jsonEncode(produto.toJson()); // Codificar o produto em JSON
+
+  final response = await http.put(Uri.parse(urlAtualizacao),
+    headers: {"Content-Type": "application/json"},
+    body: json
+  );
+
+  if (response.statusCode == 200) {
+    // Atualizar o produto na lista local
+    final index = produtos.indexWhere((prod) => prod.id == id);
+    if (index != -1) {
+      produtos[index] = produto;
+    }
+    return true;
+  } else {
+    // Se a requisição falhar, retornar falso
+    return false;
+  }
+}
+
+
+
 
 }

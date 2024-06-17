@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_json_atual/View/home_screen.dart';
-import 'package:projeto_json_atual/View/produto_info_view.dart';
 import 'package:projeto_json_atual/View/produtos_cadastro_view.dart';
 import 'package:projeto_json_atual/View/produtos_view.dart';
 

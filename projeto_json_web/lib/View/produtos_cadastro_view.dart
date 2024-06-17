@@ -80,7 +80,7 @@ class _CadastroViewState extends State<CadastroView> {
                         nome: _nomeController.text,
                         preco: int.parse(_precoController.text),
                         categoria: _categoriaController.text,
-                        imagem: _imagemController.text,
+                        imagem: _imagemController.text, id: '',
                       );
 
                       // Chama o método adicionarProduto do ProdutosController
